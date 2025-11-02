@@ -1,0 +1,54 @@
+// ============================================================
+// Tier 3 Lesson: Async Scheduler Deep Dive
+// Goal: coordinate multiple async tasks and surface progress events.
+// Run with: ./scripts/build.sh lessons/tier3_advanced/async_scheduler.svs
+// Try-It: add a third task or adjust the timeout value.
+// ============================================================
+
+import <string> as strings;
+
+fn log_event(message) {
+    println("[event] ", message);
+}
+
+async fn schedule_job(name, delay_ms) {
+    log_event(strings.concat(name, " -> queued"));
+    sleep(delay_ms);
+    log_event(strings.concat(name, " -> completed"));
+    trigger_event("job_complete", name);
+    return strings.concat(name, "-done");
+}
+
+fn handle_job_event(payload) {
+    println("Observer noted completion -> ", payload);
+}
+
+fn run_demo() {
+    println("=== Unified async runner ===");
+    on_event("job_complete", handle_job_event);
+
+    let alpha = async schedule_job("alpha", 150);
+    let beta = async schedule_job("beta", 200);
+
+    let mut finished = [];
+
+    let result_alpha = await alpha;
+    finished = push(finished, result_alpha);
+
+    let result_beta = await beta;
+    finished = push(finished, result_beta);
+
+    println("Finished jobs -> ", len(finished));
+
+    if len(finished) == 2 {
+        println("[Self Check] Scheduler drained all tasks.");
+    } else {
+        println("[Self Check] Scheduler still has pending tasks.");
+    }
+
+    println("Try-It Yourself: register a second event handler that counts completions.");
+}
+
+fn main() {
+    run_demo();
+}

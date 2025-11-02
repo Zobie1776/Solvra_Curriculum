@@ -1,0 +1,39 @@
+// ============================================================
+// Lesson 02: Variables and Types
+// Goal: master let, let mut, and const with SolvraScript types.
+// Run with: ./scripts/build.sh lessons/tier1_foundations/examples/02_variables.svs
+// Try-It: adjust starting_count and observe the self-check.
+// ============================================================
+
+fn add_points(score: int, points: int) {
+    return score + points;
+}
+
+fn show_value(label, value) {
+    println(label);
+    println(value);
+}
+
+fn run_demo() {
+    const BANNER = "Variable tour";
+    const STARTING_COUNT: int = 3;
+    show_value("== Banner ==", BANNER);
+    show_value("Starting count ->", STARTING_COUNT);
+
+    let mut score: int = STARTING_COUNT;
+    score = add_points(score, 2);
+    show_value("First update ->", score);
+    score = add_points(score, 5);
+    show_value("Second update ->", score);
+
+    // Quick self-check: should report 10 when STARTING_COUNT = 3.
+    score = STARTING_COUNT;
+    score = add_points(score, 7);
+    show_value("[Self Check] Expected 10 ->", score);
+
+    println("Try-It Yourself: change STARTING_COUNT to 5 and rerun.");
+}
+
+fn main() {
+    run_demo();
+}

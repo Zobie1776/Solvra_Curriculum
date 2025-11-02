@@ -1,0 +1,1317 @@
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Error: parse error: Expected identifier but found StringType at line 15, column 9
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Error: literal type not supported in VM compiler: Object([("first", Identifier { name: "first", position: Position { line: 19, column: 18, offset: 440 } }), ("last", Identifier { name: "last", position: Position { line: 21, column: 17, offset: 463 } })])
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Error: literal type not supported in VM compiler: Array([Identifier { name: "first", position: Position { line: 17, column: 13, offset: 422 } }, Identifier { name: "last", position: Position { line: 17, column: 20, offset: 429 } }])
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Compiled -> /home/zobie/repo/Solvra_Curriculum/lessons/tier1_foundations/examples/03_functions.svc
+[32mSaved bytecode:[0m build/compiled/lessons/tier1_foundations/examples/03_functions.svc
+[33mRunning source with solvrascript...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `vm_loader` is never read
+  --> solvra_script/core_bridge.rs:38:5
+   |
+34 | pub struct CoreBridge {
+   |            ---------- field in this struct
+...
+38 |     vm_loader: ModuleLoaderVm,
+   |     ^^^^^^^^^
+   |
+   = note: `CoreBridge` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: methods `runtime`, `memory`, `value`, and `schedule_script` are never used
+   --> solvra_script/core_bridge.rs:71:12
+    |
+ 47 | impl CoreBridge {
+    | --------------- methods in this implementation
+...
+ 71 |     pub fn runtime(&self) -> &SolvraRuntime {
+    |            ^^^^^^^
+...
+ 79 |     pub fn memory(&self) -> Arc<MemoryContract> {
+    |            ^^^^^^
+...
+123 |     pub fn value(&self, handle: MemoryHandle) -> Result<Arc<CoreValue>, MemoryError> {
+    |            ^^^^^
+...
+133 |     pub fn schedule_script(&self, source: &str) -> SolvraCoreResult<()> {
+    |            ^^^^^^^^^^^^^^^
+
+warning: method `clone_for_spawn` is never used
+   --> solvra_script/core_bridge.rs:208:8
+    |
+207 | impl CoreBridge {
+    | --------------- method in this implementation
+208 |     fn clone_for_spawn(&self) -> Self {
+    |        ^^^^^^^^^^^^^^^
+
+warning: variants `NotSupported` and `InvalidInput` are never constructed
+  --> solvra_script/platform/mod.rs:26:5
+   |
+24 | pub enum PlatformError {
+   |          ------------- variants in this enum
+25 |     IoError(String),
+26 |     NotSupported(String),
+   |     ^^^^^^^^^^^^
+27 |     InvalidInput(String),
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PlatformError` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated functions `canonicalize_path`, `print`, and `flush_stdout` are never used
+   --> solvra_script/platform/mod.rs:107:8
+    |
+ 95 | pub trait PlatformOps {
+    |           ----------- associated functions in this trait
+...
+107 |     fn canonicalize_path(path: &str) -> PlatformResult<String>;
+    |        ^^^^^^^^^^^^^^^^^
+108 |     fn sleep(duration: Duration);
+109 |     fn print(text: &str) -> PlatformResult<()>;
+    |        ^^^^^
+...
+112 |     fn flush_stdout() -> PlatformResult<()>;
+    |        ^^^^^^^^^^^^
+
+warning: function `canonicalize_path` is never used
+   --> solvra_script/platform/mod.rs:198:8
+    |
+198 | pub fn canonicalize_path(path: &str) -> PlatformResult<String> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: function `print` is never used
+   --> solvra_script/platform/mod.rs:206:8
+    |
+206 | pub fn print(text: &str) -> PlatformResult<()> {
+    |        ^^^^^
+
+warning: function `flush_stdout` is never used
+   --> solvra_script/platform/mod.rs:218:8
+    |
+218 | pub fn flush_stdout() -> PlatformResult<()> {
+    |        ^^^^^^^^^^^^
+
+warning: function `compile_function` is never used
+  --> solvra_script/vm/compiler.rs:20:8
+   |
+20 | pub fn compile_function(stmt: &Stmt) -> Result<Vec<u8>> {
+   |        ^^^^^^^^^^^^^^^^
+
+Computed score -> 
+Feedback -> 
+Second score -> 
+Feedback -> 
+[Self Check] lesson_score(5, 0) -> 
+Try-It Yourself: change the bonus formula or add a new feedback tier.
+[32mBuild runner finished successfully.[0m
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Compiled -> /home/zobie/repo/Solvra_Curriculum/lessons/tier1_foundations/examples/03_functions.svc
+[32mSaved bytecode:[0m build/compiled/lessons/tier1_foundations/examples/03_functions.svc
+[33mRunning source with solvrascript...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `vm_loader` is never read
+  --> solvra_script/core_bridge.rs:38:5
+   |
+34 | pub struct CoreBridge {
+   |            ---------- field in this struct
+...
+38 |     vm_loader: ModuleLoaderVm,
+   |     ^^^^^^^^^
+   |
+   = note: `CoreBridge` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: methods `runtime`, `memory`, `value`, and `schedule_script` are never used
+   --> solvra_script/core_bridge.rs:71:12
+    |
+ 47 | impl CoreBridge {
+    | --------------- methods in this implementation
+...
+ 71 |     pub fn runtime(&self) -> &SolvraRuntime {
+    |            ^^^^^^^
+...
+ 79 |     pub fn memory(&self) -> Arc<MemoryContract> {
+    |            ^^^^^^
+...
+123 |     pub fn value(&self, handle: MemoryHandle) -> Result<Arc<CoreValue>, MemoryError> {
+    |            ^^^^^
+...
+133 |     pub fn schedule_script(&self, source: &str) -> SolvraCoreResult<()> {
+    |            ^^^^^^^^^^^^^^^
+
+warning: method `clone_for_spawn` is never used
+   --> solvra_script/core_bridge.rs:208:8
+    |
+207 | impl CoreBridge {
+    | --------------- method in this implementation
+208 |     fn clone_for_spawn(&self) -> Self {
+    |        ^^^^^^^^^^^^^^^
+
+warning: variants `NotSupported` and `InvalidInput` are never constructed
+  --> solvra_script/platform/mod.rs:26:5
+   |
+24 | pub enum PlatformError {
+   |          ------------- variants in this enum
+25 |     IoError(String),
+26 |     NotSupported(String),
+   |     ^^^^^^^^^^^^
+27 |     InvalidInput(String),
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PlatformError` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated functions `canonicalize_path`, `print`, and `flush_stdout` are never used
+   --> solvra_script/platform/mod.rs:107:8
+    |
+ 95 | pub trait PlatformOps {
+    |           ----------- associated functions in this trait
+...
+107 |     fn canonicalize_path(path: &str) -> PlatformResult<String>;
+    |        ^^^^^^^^^^^^^^^^^
+108 |     fn sleep(duration: Duration);
+109 |     fn print(text: &str) -> PlatformResult<()>;
+    |        ^^^^^
+...
+112 |     fn flush_stdout() -> PlatformResult<()>;
+    |        ^^^^^^^^^^^^
+
+warning: function `canonicalize_path` is never used
+   --> solvra_script/platform/mod.rs:198:8
+    |
+198 | pub fn canonicalize_path(path: &str) -> PlatformResult<String> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: function `print` is never used
+   --> solvra_script/platform/mod.rs:206:8
+    |
+206 | pub fn print(text: &str) -> PlatformResult<()> {
+    |        ^^^^^
+
+warning: function `flush_stdout` is never used
+   --> solvra_script/platform/mod.rs:218:8
+    |
+218 | pub fn flush_stdout() -> PlatformResult<()> {
+    |        ^^^^^^^^^^^^
+
+warning: function `compile_function` is never used
+  --> solvra_script/vm/compiler.rs:20:8
+   |
+20 | pub fn compile_function(stmt: &Stmt) -> Result<Vec<u8>> {
+   |        ^^^^^^^^^^^^^^^^
+
+runtime error: unknown builtin function 'to_string'
+    at run_demo
+    at main
+Error: runtime error: unknown builtin function 'to_string'
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Compiled -> /home/zobie/repo/Solvra_Curriculum/lessons/tier1_foundations/examples/03_functions.svc
+[32mSaved bytecode:[0m build/compiled/lessons/tier1_foundations/examples/03_functions.svc
+[33mRunning source with solvrascript...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `vm_loader` is never read
+  --> solvra_script/core_bridge.rs:38:5
+   |
+34 | pub struct CoreBridge {
+   |            ---------- field in this struct
+...
+38 |     vm_loader: ModuleLoaderVm,
+   |     ^^^^^^^^^
+   |
+   = note: `CoreBridge` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: methods `runtime`, `memory`, `value`, and `schedule_script` are never used
+   --> solvra_script/core_bridge.rs:71:12
+    |
+ 47 | impl CoreBridge {
+    | --------------- methods in this implementation
+...
+ 71 |     pub fn runtime(&self) -> &SolvraRuntime {
+    |            ^^^^^^^
+...
+ 79 |     pub fn memory(&self) -> Arc<MemoryContract> {
+    |            ^^^^^^
+...
+123 |     pub fn value(&self, handle: MemoryHandle) -> Result<Arc<CoreValue>, MemoryError> {
+    |            ^^^^^
+...
+133 |     pub fn schedule_script(&self, source: &str) -> SolvraCoreResult<()> {
+    |            ^^^^^^^^^^^^^^^
+
+warning: method `clone_for_spawn` is never used
+   --> solvra_script/core_bridge.rs:208:8
+    |
+207 | impl CoreBridge {
+    | --------------- method in this implementation
+208 |     fn clone_for_spawn(&self) -> Self {
+    |        ^^^^^^^^^^^^^^^
+
+warning: variants `NotSupported` and `InvalidInput` are never constructed
+  --> solvra_script/platform/mod.rs:26:5
+   |
+24 | pub enum PlatformError {
+   |          ------------- variants in this enum
+25 |     IoError(String),
+26 |     NotSupported(String),
+   |     ^^^^^^^^^^^^
+27 |     InvalidInput(String),
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PlatformError` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated functions `canonicalize_path`, `print`, and `flush_stdout` are never used
+   --> solvra_script/platform/mod.rs:107:8
+    |
+ 95 | pub trait PlatformOps {
+    |           ----------- associated functions in this trait
+...
+107 |     fn canonicalize_path(path: &str) -> PlatformResult<String>;
+    |        ^^^^^^^^^^^^^^^^^
+108 |     fn sleep(duration: Duration);
+109 |     fn print(text: &str) -> PlatformResult<()>;
+    |        ^^^^^
+...
+112 |     fn flush_stdout() -> PlatformResult<()>;
+    |        ^^^^^^^^^^^^
+
+warning: function `canonicalize_path` is never used
+   --> solvra_script/platform/mod.rs:198:8
+    |
+198 | pub fn canonicalize_path(path: &str) -> PlatformResult<String> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: function `print` is never used
+   --> solvra_script/platform/mod.rs:206:8
+    |
+206 | pub fn print(text: &str) -> PlatformResult<()> {
+    |        ^^^^^
+
+warning: function `flush_stdout` is never used
+   --> solvra_script/platform/mod.rs:218:8
+    |
+218 | pub fn flush_stdout() -> PlatformResult<()> {
+    |        ^^^^^^^^^^^^
+
+warning: function `compile_function` is never used
+  --> solvra_script/vm/compiler.rs:20:8
+   |
+20 | pub fn compile_function(stmt: &Stmt) -> Result<Vec<u8>> {
+   |        ^^^^^^^^^^^^^^^^
+
+Computed score -> 
+Feedback -> 
+Second score -> 
+Feedback -> 
+[Self Check] lesson_score(5, 0) -> 
+Try-It Yourself: change the bonus formula or add a new feedback tier.
+[32mBuild runner finished successfully.[0m
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Compiled -> /home/zobie/repo/Solvra_Curriculum/lessons/tier1_foundations/examples/03_functions.svc
+[32mSaved bytecode:[0m build/compiled/lessons/tier1_foundations/examples/03_functions.svc
+[33mRunning source with solvrascript...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `vm_loader` is never read
+  --> solvra_script/core_bridge.rs:38:5
+   |
+34 | pub struct CoreBridge {
+   |            ---------- field in this struct
+...
+38 |     vm_loader: ModuleLoaderVm,
+   |     ^^^^^^^^^
+   |
+   = note: `CoreBridge` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: methods `runtime`, `memory`, `value`, and `schedule_script` are never used
+   --> solvra_script/core_bridge.rs:71:12
+    |
+ 47 | impl CoreBridge {
+    | --------------- methods in this implementation
+...
+ 71 |     pub fn runtime(&self) -> &SolvraRuntime {
+    |            ^^^^^^^
+...
+ 79 |     pub fn memory(&self) -> Arc<MemoryContract> {
+    |            ^^^^^^
+...
+123 |     pub fn value(&self, handle: MemoryHandle) -> Result<Arc<CoreValue>, MemoryError> {
+    |            ^^^^^
+...
+133 |     pub fn schedule_script(&self, source: &str) -> SolvraCoreResult<()> {
+    |            ^^^^^^^^^^^^^^^
+
+warning: method `clone_for_spawn` is never used
+   --> solvra_script/core_bridge.rs:208:8
+    |
+207 | impl CoreBridge {
+    | --------------- method in this implementation
+208 |     fn clone_for_spawn(&self) -> Self {
+    |        ^^^^^^^^^^^^^^^
+
+warning: variants `NotSupported` and `InvalidInput` are never constructed
+  --> solvra_script/platform/mod.rs:26:5
+   |
+24 | pub enum PlatformError {
+   |          ------------- variants in this enum
+25 |     IoError(String),
+26 |     NotSupported(String),
+   |     ^^^^^^^^^^^^
+27 |     InvalidInput(String),
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PlatformError` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated functions `canonicalize_path`, `print`, and `flush_stdout` are never used
+   --> solvra_script/platform/mod.rs:107:8
+    |
+ 95 | pub trait PlatformOps {
+    |           ----------- associated functions in this trait
+...
+107 |     fn canonicalize_path(path: &str) -> PlatformResult<String>;
+    |        ^^^^^^^^^^^^^^^^^
+108 |     fn sleep(duration: Duration);
+109 |     fn print(text: &str) -> PlatformResult<()>;
+    |        ^^^^^
+...
+112 |     fn flush_stdout() -> PlatformResult<()>;
+    |        ^^^^^^^^^^^^
+
+warning: function `canonicalize_path` is never used
+   --> solvra_script/platform/mod.rs:198:8
+    |
+198 | pub fn canonicalize_path(path: &str) -> PlatformResult<String> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: function `print` is never used
+   --> solvra_script/platform/mod.rs:206:8
+    |
+206 | pub fn print(text: &str) -> PlatformResult<()> {
+    |        ^^^^^
+
+warning: function `flush_stdout` is never used
+   --> solvra_script/platform/mod.rs:218:8
+    |
+218 | pub fn flush_stdout() -> PlatformResult<()> {
+    |        ^^^^^^^^^^^^
+
+warning: function `compile_function` is never used
+  --> solvra_script/vm/compiler.rs:20:8
+   |
+20 | pub fn compile_function(stmt: &Stmt) -> Result<Vec<u8>> {
+   |        ^^^^^^^^^^^^^^^^
+
+Computed score ->
+11
+Feedback ->
+Strong progress
+Second score ->
+13
+Feedback ->
+Pro level
+[Self Check] lesson_score(5, 0) ->
+10
+Try-It Yourself: change the bonus formula or add a new feedback tier.
+[32mBuild runner finished successfully.[0m
+[34m==> Solvra build runner[0m
+[34mTarget:[0m lessons/tier1_foundations/examples/03_functions.svs
+[34mLog:[0m logs/lessons_tier1_foundations_examples_03_functions.log
+
+[33mCompiling to bytecode (.svc)...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+Compiled -> /home/zobie/repo/Solvra_Curriculum/lessons/tier1_foundations/examples/03_functions.svc
+[32mSaved bytecode:[0m build/compiled/lessons/tier1_foundations/examples/03_functions.svc
+[33mRunning source with solvrascript...[0m
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:89:15
+   |
+89 |     Parameter(ParameterId),
+   |     --------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+89 -     Parameter(ParameterId),
+89 +     Parameter(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:90:17
+   |
+90 |     Instruction(InstructionId),
+   |     ----------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+90 -     Instruction(InstructionId),
+90 +     Instruction(()),
+   |
+
+warning: field `0` is never read
+  --> solvra_core/src/backend/ir.rs:91:14
+   |
+91 |     Constant(ConstantValue),
+   |     -------- ^^^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ValueKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+91 -     Constant(ConstantValue),
+91 +     Constant(()),
+   |
+
+warning: fields `kind` and `name` are never read
+  --> solvra_core/src/backend/ir.rs:98:5
+   |
+96 | struct ValueData {
+   |        --------- fields in this struct
+97 |     ty: IrType,
+98 |     kind: ValueKind,
+   |     ^^^^
+99 |     name: Option<String>,
+   |     ^^^^
+   |
+   = note: `ValueData` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `vm_loader` is never read
+  --> solvra_script/core_bridge.rs:38:5
+   |
+34 | pub struct CoreBridge {
+   |            ---------- field in this struct
+...
+38 |     vm_loader: ModuleLoaderVm,
+   |     ^^^^^^^^^
+   |
+   = note: `CoreBridge` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: methods `runtime`, `memory`, `value`, and `schedule_script` are never used
+   --> solvra_script/core_bridge.rs:71:12
+    |
+ 47 | impl CoreBridge {
+    | --------------- methods in this implementation
+...
+ 71 |     pub fn runtime(&self) -> &SolvraRuntime {
+    |            ^^^^^^^
+...
+ 79 |     pub fn memory(&self) -> Arc<MemoryContract> {
+    |            ^^^^^^
+...
+123 |     pub fn value(&self, handle: MemoryHandle) -> Result<Arc<CoreValue>, MemoryError> {
+    |            ^^^^^
+...
+133 |     pub fn schedule_script(&self, source: &str) -> SolvraCoreResult<()> {
+    |            ^^^^^^^^^^^^^^^
+
+warning: method `clone_for_spawn` is never used
+   --> solvra_script/core_bridge.rs:208:8
+    |
+207 | impl CoreBridge {
+    | --------------- method in this implementation
+208 |     fn clone_for_spawn(&self) -> Self {
+    |        ^^^^^^^^^^^^^^^
+
+warning: variants `NotSupported` and `InvalidInput` are never constructed
+  --> solvra_script/platform/mod.rs:26:5
+   |
+24 | pub enum PlatformError {
+   |          ------------- variants in this enum
+25 |     IoError(String),
+26 |     NotSupported(String),
+   |     ^^^^^^^^^^^^
+27 |     InvalidInput(String),
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PlatformError` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated functions `canonicalize_path`, `print`, and `flush_stdout` are never used
+   --> solvra_script/platform/mod.rs:107:8
+    |
+ 95 | pub trait PlatformOps {
+    |           ----------- associated functions in this trait
+...
+107 |     fn canonicalize_path(path: &str) -> PlatformResult<String>;
+    |        ^^^^^^^^^^^^^^^^^
+108 |     fn sleep(duration: Duration);
+109 |     fn print(text: &str) -> PlatformResult<()>;
+    |        ^^^^^
+...
+112 |     fn flush_stdout() -> PlatformResult<()>;
+    |        ^^^^^^^^^^^^
+
+warning: function `canonicalize_path` is never used
+   --> solvra_script/platform/mod.rs:198:8
+    |
+198 | pub fn canonicalize_path(path: &str) -> PlatformResult<String> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: function `print` is never used
+   --> solvra_script/platform/mod.rs:206:8
+    |
+206 | pub fn print(text: &str) -> PlatformResult<()> {
+    |        ^^^^^
+
+warning: function `flush_stdout` is never used
+   --> solvra_script/platform/mod.rs:218:8
+    |
+218 | pub fn flush_stdout() -> PlatformResult<()> {
+    |        ^^^^^^^^^^^^
+
+warning: function `compile_function` is never used
+  --> solvra_script/vm/compiler.rs:20:8
+   |
+20 | pub fn compile_function(stmt: &Stmt) -> Result<Vec<u8>> {
+   |        ^^^^^^^^^^^^^^^^
+
+Computed score ->
+11
+Feedback ->
+Strong progress
+Second score ->
+13
+Feedback ->
+Pro level
+[Self Check] lesson_score(5, 0) ->
+10
+Try-It Yourself: change the bonus formula or add a new feedback tier.
+[32mBuild runner finished successfully.[0m

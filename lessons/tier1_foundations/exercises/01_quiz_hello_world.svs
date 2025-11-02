@@ -1,0 +1,50 @@
+// ============================================================
+// Exercise 01: Hello World Quiz
+// Task: Predict the output of greeting helpers and verify the results.
+// Tip: Update the answers array to test yourself before revealing the key.
+// ============================================================
+
+import <string> as strings;
+
+fn build_greeting(name) {
+    return strings.concat("Hello, ", strings.concat(name, "!"));
+}
+
+fn run_quiz() {
+    let mut answers = [
+        build_greeting("Solvra"),
+        "Hello, Debugger!",
+        "Hello, Learner!"
+    ];
+
+    let key = [
+        "Hello, Solvra!",
+        build_greeting("Debugger"),
+        build_greeting("Learner")
+    ];
+
+    let mut score = 0;
+    let total = len(key);
+    let mut index = 0;
+
+    while index < total {
+        let guess = answers[index];
+        let expected = key[index];
+        let mut label = "Correct";
+        if guess != expected {
+            label = "Try again";
+        } else {
+            score = score + 1;
+        }
+        println("Question ", index + 1, " -> ", guess);
+        println("Expected       -> ", expected);
+        println("Result         -> ", label);
+        println("---");
+        index = index + 1;
+    }
+
+    println("Score -> ", score, "/", total);
+    println("Try-It Yourself: change answers before peeking at the expected column.");
+}
+
+run_quiz();

@@ -1,0 +1,20 @@
+; Tier 4 compiled artifact: runtime internals narrator
+.version 1
+.entry run
+
+.const 0 "Runtime boot -> stack + heap prepared"
+.const 1 "Executor primed -> cooperative tasks ready"
+.const 2 "Memory contract -> query via core_memory_stats()"
+.const 3 "Driver hooks -> register before scheduling"
+
+.fn run 0 0
+    load_const 0
+    call_native println 1
+    load_const 1
+    call_native println 1
+    load_const 2
+    call_native println 1
+    load_const 3
+    call_native println 1
+    return
+.end

@@ -1,0 +1,19 @@
+// ============================================================
+// Tier 2 Automated Test Runner
+// Goal: execute intermediate lessons and confirm async + memory flows.
+// Run with: ./scripts/test.sh tier2
+// ============================================================
+
+import "lessons/tier2_intermediate/async_programming.svs" as lesson_async;
+import "lessons/tier2_intermediate/memory_basics.svs" as lesson_memory;
+import "lessons/tier2_intermediate/compile_and_run.svs" as lesson_compile;
+
+fn run_tests() {
+    println("=== Tier 2 Intermediate Smoke Test ===");
+    lesson_async.run_demo();
+    lesson_memory.run_demo();
+    lesson_compile.run_demo();
+    println("Tier 2 lessons executed. Inspect logs for runtime surprises.");
+}
+
+run_tests();

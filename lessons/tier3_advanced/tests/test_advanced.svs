@@ -1,0 +1,19 @@
+// ============================================================
+// Tier 3 Automated Test Runner
+// Goal: run advanced modules, async scheduler, and compiled pipeline demos.
+// Run with: ./scripts/test.sh tier3
+// ============================================================
+
+import "lessons/tier3_advanced/modules_and_imports.svs" as lesson_modules;
+import "lessons/tier3_advanced/classes.svs" as lesson_classes;
+import "lessons/tier3_advanced/async_scheduler.svs" as lesson_scheduler;
+
+fn run_tests() {
+    println("=== Tier 3 Advanced Smoke Test ===");
+    lesson_modules.run_demo();
+    lesson_classes.run_demo();
+    lesson_scheduler.run_demo();
+    println("Reminder: run compile_pipeline.svc via build script for bytecode context.");
+}
+
+run_tests();

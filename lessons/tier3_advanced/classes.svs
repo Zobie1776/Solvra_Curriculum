@@ -1,0 +1,52 @@
+// ============================================================
+// Tier 3 Lesson: Class Patterns (Pre-Class Syntax)
+// Goal: simulate class-style organisation with object maps and helper methods.
+// Run with: ./scripts/build.sh lessons/tier3_advanced/classes.svs
+// Try-It: add a new helper that clears the task list.
+// ============================================================
+
+fn make_robot(name) {
+    return {
+        "name": name,
+        "tasks": [],
+    };
+}
+
+fn robot_add_task(robot, task) {
+    let mut tasks = robot.tasks;
+    tasks = push(tasks, task);
+    robot.tasks = tasks;
+    println("Task added -> ", task);
+    return robot;
+}
+
+fn robot_summary(robot) {
+    println("Robot -> ", robot.name);
+    println("Task count -> ", len(robot.tasks));
+    for job in robot.tasks {
+        println(" - ", job);
+    }
+}
+
+fn run_demo() {
+    println("=== Object-oriented patterns ===");
+
+    let mut scout = make_robot("Scout-7");
+    scout = robot_add_task(scout, "Scan modules");
+    scout = robot_add_task(scout, "Report status");
+
+    robot_summary(scout);
+
+    // Quick self-check: validate the robot stored exactly two tasks.
+    if len(scout.tasks) == 2 {
+        println("[Self Check] Robot task ledger looks good.");
+    } else {
+        println("[Self Check] Task ledger mismatch.");
+    }
+
+    println("Try-It Yourself: augment robot_add_task with priority labels.");
+}
+
+fn main() {
+    run_demo();
+}

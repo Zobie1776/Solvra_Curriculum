@@ -1,0 +1,56 @@
+// ============================================================
+// Tier 2 Lesson: Async Programming
+// Goal: understand async/await, cooperative scheduling, and timeouts.
+// Run with: ./scripts/build.sh lessons/tier2_intermediate/async_programming.svs
+// Try-It: change TASK_DELAY_MS or spawn an extra async job.
+// ============================================================
+
+import <string> as strings;
+
+const TASK_DELAY_MS = 150;
+
+fn async_fetch(label, delay_ms) {
+    println("[", label, "] scheduling work");
+    sleep(delay_ms);
+    println("[", label, "] finished after ", delay_ms, " ms");
+    return strings.concat(label, "-value");
+}
+
+async fn fetch_report() {
+    let first = async async_fetch("alpha", TASK_DELAY_MS);
+    let second = async async_fetch("beta", TASK_DELAY_MS + 50);
+
+    let first_value = await first;
+    let second_value = await second;
+
+    return [first_value, second_value];
+}
+
+fn run_demo() {
+    println("=== Async scheduler warm-up ===");
+    let start = time();
+
+    let job = async fetch_report();
+    let values = await job;
+
+    println("Collected values -> ", values[0], ", ", values[1]);
+
+    let mut elapsed = time() - start;
+    if elapsed < 0 {
+        elapsed = 0;
+    }
+    println("Elapsed seconds -> ", elapsed);
+
+    // Quick self-check: both async_fetch calls must have run.
+    if len(values) == 2 {
+        println("[Self Check] Both async tasks completed.");
+    } else {
+        println("[Self Check] Missing async result.");
+    }
+
+    println("Try-It Yourself: raise TASK_DELAY_MS and observe scheduler output.");
+}
+
+fn main() {
+    run_demo();
+}

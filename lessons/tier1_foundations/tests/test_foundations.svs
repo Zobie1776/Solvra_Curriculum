@@ -1,0 +1,27 @@
+// ============================================================
+// Tier 1 Automated Test Runner
+// Goal: exercise each foundation lesson and report quick pass/fail notes.
+// Run with: ./scripts/test.sh tier1
+// ============================================================
+
+import "lessons/tier1_foundations/examples/01_hello_world.svs" as lesson01;
+import "lessons/tier1_foundations/examples/02_variables.svs" as lesson02;
+import "lessons/tier1_foundations/examples/03_functions.svs" as lesson03;
+import "lessons/tier1_foundations/examples/04_conditionals.svs" as lesson04;
+import "lessons/tier1_foundations/examples/05_loops.svs" as lesson05;
+import "lessons/tier1_foundations/examples/06_basic_math.svs" as lesson06;
+
+fn run_tests() {
+    println("=== Tier 1 Foundations Smoke Test ===");
+
+    lesson01.run_demo();
+    lesson02.run_demo();
+    lesson03.run_demo();
+    lesson04.run_demo();
+    lesson05.run_demo();
+    lesson06.run_demo();
+
+    println("All lessons invoked. Review output for any surprises.");
+}
+
+run_tests();

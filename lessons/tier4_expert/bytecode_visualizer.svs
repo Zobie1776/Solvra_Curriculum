@@ -1,0 +1,26 @@
+// ============================================================
+// Tier 4 Lesson: Bytecode Visualizer
+// Goal: inspect a .svc file from SolvraScript and outline CLI tooling steps.
+// Run with: ./scripts/build.sh lessons/tier4_expert/bytecode_visualizer.svs
+// Try-It: point TARGET_FILE to your own compiled artifact.
+// ============================================================
+
+const TARGET_FILE = "lessons/tier3_advanced/compile_pipeline.svc";
+
+fn run_demo() {
+    println("=== Bytecode preview ===");
+    let contents = read_file(TARGET_FILE);
+    println("Loaded ", TARGET_FILE, " -> ", len(contents), " bytes");
+
+    println("First chunk:");
+    println(contents);
+
+    println("Next steps:\n 1. cargo run --bin solvra_disasm -- ", TARGET_FILE, "\n 2. Compare disassembly with runtime output\n 3. Map each opcode to docs/svc_format.md");
+
+    println("[Self Check] If the file failed to load, verify the path and rerun.");
+    println("Try-It Yourself: compile a lesson with ./scripts/build.sh and disassemble it.");
+}
+
+fn main() {
+    run_demo();
+}

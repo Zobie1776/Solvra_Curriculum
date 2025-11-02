@@ -1,0 +1,44 @@
+// ============================================================
+// Lesson 03: Functions and Parameters
+// Goal: practice defining functions with inputs, outputs, and reuse.
+// Run with: ./scripts/build.sh lessons/tier1_foundations/examples/03_functions.svs
+// Try-It: add your own helper that computes a custom metric.
+// ============================================================
+
+fn lesson_score(completed, bonus) {
+    return completed * 2 + bonus;
+}
+
+fn feedback(score) {
+    if score >= 12 {
+        return "Pro level";
+    } else if score >= 8 {
+        return "Strong progress";
+    }
+    return "Keep exploring";
+}
+
+fn show_value(label, value) {
+    println(label);
+    println(value);
+}
+
+fn run_demo() {
+    let score = lesson_score(4, 3);
+    show_value("Computed score ->", score);
+    show_value("Feedback ->", feedback(score));
+
+    let alt_score = lesson_score(6, 1);
+    show_value("Second score ->", alt_score);
+    show_value("Feedback ->", feedback(alt_score));
+
+    // Quick self-check: lesson_score(5, 0) should return 10.
+    let check = lesson_score(5, 0);
+    show_value("[Self Check] lesson_score(5, 0) ->", check);
+
+    println("Try-It Yourself: change the bonus formula or add a new feedback tier.");
+}
+
+fn main() {
+    run_demo();
+}

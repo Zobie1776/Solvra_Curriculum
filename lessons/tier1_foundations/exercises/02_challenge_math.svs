@@ -1,0 +1,30 @@
+// ============================================================
+// Exercise 02: Math Mini Challenge
+// Task: Fill in the TODO values to hit the target score with builtins.
+// Tip: Each test prints feedback immediately so you can iterate quickly.
+// ============================================================
+
+fn target_expression(a, b, c) {
+    // TODO: adjust the expression to reach the target 42 when using
+    // the default numbers below. Start with addition, then mix in sbt/div.
+    return a + b + c;
+}
+
+fn run_challenge() {
+    let numbers = [20, 15, 7];
+    println("Numbers -> ", numbers[0], ", ", numbers[1], ", ", numbers[2]);
+
+    let raw_total = numbers[0] + numbers[1] + numbers[2];
+    println("Raw total -> ", raw_total);
+
+    let result = target_expression(numbers[0], numbers[1], numbers[2]);
+    println("Challenge result -> ", result);
+
+    if result == 42 {
+        println("[Success] You hit the target!");
+    } else {
+        println("[Keep Going] Adjust target_expression to make 42.");
+    }
+}
+
+run_challenge();

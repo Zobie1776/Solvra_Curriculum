@@ -1,0 +1,53 @@
+// ============================================================
+// Lesson 04: Conditionals and Branching
+// Goal: practice if/else, boolean helpers, and comparisons.
+// Run with: ./scripts/build.sh lessons/tier1_foundations/examples/04_conditionals.svs
+// Try-It: adjust the temperature value to explore other branches.
+// ============================================================
+
+fn describe_temperature(temp_c) {
+    if temp_c <= 0 {
+        return "Freezing";
+    } else if temp_c < 15 {
+        return "Chilly";
+    } else if temp_c < 25 {
+        return "Comfortable";
+    }
+    return "Warm";
+}
+
+fn show_value(label, value) {
+    println(label);
+    println(value);
+}
+
+fn run_demo() {
+    let reading = 18;
+    let summary = describe_temperature(reading);
+    show_value("Current reading ->", reading);
+    show_value("Feels ->", summary);
+
+    let mut flags = [];
+    if summary == "Comfortable" {
+        flags = push(flags, "Open windows");
+    } else {
+        flags = push(flags, "Adjust thermostat");
+    }
+
+    show_value("Suggested actions count ->", len(flags));
+
+    // Quick self-check loop: run descriptions for multiple values.
+    let samples = [ -5, 10, 22, 30 ];
+    for value in samples {
+        println("[Check] Sample reading:");
+        println(value);
+        println("Outcome:");
+        println(describe_temperature(value));
+    }
+
+    println("Try-It Yourself: insert a branch for very hot days.");
+}
+
+fn main() {
+    run_demo();
+}

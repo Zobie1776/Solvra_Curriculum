@@ -1,0 +1,11 @@
+; Tier 1 compiled smoke test
+.version 1
+.entry run
+
+.const 0 "Tier1 compiled check OK"
+
+.fn run 0 0
+    load_const 0
+    call_native println 1
+    return
+.end

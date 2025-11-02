@@ -1,0 +1,17 @@
+// ============================================================
+// Tier 4 Automated Test Runner
+// Goal: exercise expert-level orchestration lessons.
+// Run with: ./scripts/test.sh tier4
+// ============================================================
+
+import "lessons/tier4_expert/bytecode_visualizer.svs" as visualizer;
+import "lessons/tier4_expert/ai_module_integration.svs" as ai_bridge;
+
+fn run_tests() {
+    println("=== Tier 4 Expert Smoke Test ===");
+    visualizer.run_demo();
+    ai_bridge.run_demo();
+    println("Reminder: run solvra_runtime_internals.svc and plan the final project next.");
+}
+
+run_tests();

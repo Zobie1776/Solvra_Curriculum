@@ -1,0 +1,32 @@
+// ============================================================
+// Tier 2 Lesson: Compiling and Running Bytecode
+// Goal: execute a compiled .svc module from SolvraScript and inspect results.
+// Run with: ./scripts/build.sh lessons/tier2_intermediate/compile_and_run.svs
+// Try-It: swap the imported module for your own compiled artifact.
+// ============================================================
+
+import "Solvra_pkg/solvra_core/samples/add_numbers.svc" as add_module;
+
+fn run_demo() {
+    println("=== Compiled module execution ===");
+
+    let handle = add_module.module.handle;
+    let result = core_module_execute(handle);
+    println("add_numbers.svc returned -> ", result);
+
+    // Quick self-check: compiled module should return 5 (2 + 3).
+    if result == 5 {
+        println("[Self Check] Bytecode execution is wired up.");
+    } else {
+        println("[Self Check] Unexpected result from compiled module.");
+    }
+
+    core_module_release(handle);
+    println("Module handle released.");
+
+    println("Try-It Yourself: replace add_numbers.svc with loop_counter.svc and rerun.");
+}
+
+fn main() {
+    run_demo();
+}

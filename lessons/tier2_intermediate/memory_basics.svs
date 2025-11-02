@@ -1,0 +1,54 @@
+// ============================================================
+// Tier 2 Lesson: Memory Basics
+// Goal: inspect SolvraCore allocator stats from SolvraScript.
+// Run with: ./scripts/build.sh lessons/tier2_intermediate/memory_basics.svs
+// Try-It: adjust SAMPLE_COUNT to watch memory usage shift.
+// ============================================================
+
+import <vector>;
+
+const SAMPLE_COUNT = 3;
+
+fn log_stats(stage) {
+    let stats = core_memory_stats();
+    println(stage, " capacity -> ", stats.capacity_bytes);
+    println(stage, " used      -> ", stats.used_bytes);
+    println(stage, " allocations -> ", stats.allocations);
+}
+
+fn allocate_vectors(count) {
+    let mut data = [];
+    let mut index = 0;
+    while index < count {
+        let mut item = vector.make();
+        item = vector.append(item, index);
+        item = vector.append(item, index * 2);
+        data = push(data, item);
+        index = index + 1;
+    }
+    return data;
+}
+
+fn run_demo() {
+    println("=== Memory contract stats ===");
+    log_stats("[Start]");
+
+    let payload = allocate_vectors(SAMPLE_COUNT);
+    println("Allocated ", len(payload), " vector(s)");
+
+    log_stats("[After alloc]");
+
+    // Quick self-check: confirm we recorded at least one allocation.
+    let stats = core_memory_stats();
+    if stats.allocations > 0 {
+        println("[Self Check] Allocator is tracking new work.");
+    } else {
+        println("[Self Check] Unexpected zero allocations.");
+    }
+
+    println("Try-It Yourself: bump SAMPLE_COUNT to 10 and re-run to compare.");
+}
+
+fn main() {
+    run_demo();
+}

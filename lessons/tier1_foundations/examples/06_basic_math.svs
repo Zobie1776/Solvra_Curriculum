@@ -1,0 +1,36 @@
+// ============================================================
+// Lesson 06: Math and Builtins
+// Goal: practice SolvraScript arithmetic helpers and formatting.
+// Run with: ./scripts/build.sh lessons/tier1_foundations/examples/06_basic_math.svs
+// Try-It: change the quiz numbers or add a random challenge.
+// ============================================================
+
+fn show_operations(a, b) {
+    println("Inputs -> ", a, ", ", b);
+    println("Add -> ", a + b);
+    println("Subtract via sbt -> ", sbt(a, b));
+    println("Divide via div -> ", div(a, b));
+    println("Power -> ", pow(a, b));
+}
+
+fn run_demo() {
+    show_operations(9, 3);
+
+    let random_pick = random(1, 10);
+    println("Random helper -> ", random_pick);
+
+    // Quick self-check: verify sbt mirrors manual subtraction.
+    let manual = 9 - 3;
+    let builtin = sbt(9, 3);
+    if manual == builtin {
+        println("[Self Check] sbt matches manual subtraction.");
+    } else {
+        println("[Self Check] sbt mismatch -> investigate inputs.");
+    }
+
+    println("Try-It Yourself: call show_operations() with new numbers.");
+}
+
+fn main() {
+    run_demo();
+}

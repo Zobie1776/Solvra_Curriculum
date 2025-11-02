@@ -1,0 +1,49 @@
+// ============================================================
+// Lesson 05: Loops and Iteration
+// Goal: compare while and for loops in SolvraScript.
+// Run with: ./scripts/build.sh lessons/tier1_foundations/examples/05_loops.svs
+// Try-It: extend the challenge_steps array with your own milestones.
+// ============================================================
+
+fn sum_with_while(values) {
+    let mut total = 0;
+    let mut index = 0;
+    let count = len(values);
+    while index < count {
+        total = total + values[index];
+        index = index + 1;
+    }
+    return total;
+}
+
+fn sum_with_for(values) {
+    let mut total = 0;
+    for value in values {
+        total = total + value;
+    }
+    return total;
+}
+
+fn run_demo() {
+    let challenge_steps = [1, 2, 3, 4];
+    println("Steps in plan -> ", len(challenge_steps), " items");
+
+    let while_total = sum_with_while(challenge_steps);
+    let for_total = sum_with_for(challenge_steps);
+
+    println("While loop total -> ", while_total);
+    println("For loop total -> ", for_total);
+
+    // Quick self-check: totals must match.
+    if while_total == for_total {
+        println("[Self Check] Totals match.");
+    } else {
+        println("[Self Check] Totals differ. Investigate loops.");
+    }
+
+    println("Try-It Yourself: add a value to challenge_steps and rerun.");
+}
+
+fn main() {
+    run_demo();
+}
