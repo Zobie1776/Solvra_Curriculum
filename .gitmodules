@@ -1,3 +1,6 @@
 [submodule "Solvra_pkg"]
 	path = Solvra_pkg
 	url = https://github.com/Zobie1776/Solvra_pkg.git
+[submodule "solvra_script"]
+	path = solvra_script
+	url = https://github.com/Zobie1776/SolvraScript.git
