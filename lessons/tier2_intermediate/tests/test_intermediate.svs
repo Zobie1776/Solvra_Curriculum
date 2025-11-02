@@ -1,8 +1,22 @@
-// ============================================================
-// Tier 2 Automated Test Runner
-// Goal: execute intermediate lessons and confirm async + memory flows.
+//==================================================
+// File: test_intermediate.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Execute intermediate lessons and confirm async + memory flows
+// Objective: Automated test runner for Tier 2 intermediate lessons
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Execute intermediate lessons and confirm async + memory flows.
 // Run with: ./scripts/test.sh tier2
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import "lessons/tier2_intermediate/async_programming.svs" as lesson_async;
 import "lessons/tier2_intermediate/memory_basics.svs" as lesson_memory;
@@ -17,3 +31,12 @@ fn run_tests() {
 }
 
 run_tests();
+
+//--------------------------------------------------
+// End comments: Validates async, memory, and module execution for Tier 2
+// @ZNOTE: Comprehensive testing ensures SolvraCore intermediate features work correctly
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

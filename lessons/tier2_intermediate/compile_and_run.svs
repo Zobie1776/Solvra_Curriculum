@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 2 Lesson: Compiling and Running Bytecode
-// Goal: execute a compiled .svc module from SolvraScript and inspect results.
+//==================================================
+// File: compile_and_run.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Execute a compiled .svc module from SolvraScript and inspect results
+// Objective: Demonstrate loading and executing compiled bytecode modules
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Execute a compiled .svc module from SolvraScript and inspect results.
 // Run with: ./scripts/build.sh lessons/tier2_intermediate/compile_and_run.svs
 // Try-It: swap the imported module for your own compiled artifact.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import "Solvra_pkg/solvra_core/samples/add_numbers.svc" as add_module;
 
@@ -30,3 +44,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Shows how to load, execute, and release compiled bytecode modules
+// @ZNOTE: Module system bridges SolvraScript orchestration with compiled SolvraCore artifacts
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

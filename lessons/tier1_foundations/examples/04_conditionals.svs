@@ -1,9 +1,23 @@
-// ============================================================
-// Lesson 04: Conditionals and Branching
-// Goal: practice if/else, boolean helpers, and comparisons.
+//==================================================
+// File: 04_conditionals.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Practice if/else, boolean helpers, and comparisons
+// Objective: Demonstrate conditional branching with if/else chains and comparison operators
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Practice if/else, boolean helpers, and comparisons.
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/04_conditionals.svs
 // Try-It: adjust the temperature value to explore other branches.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn describe_temperature(temp_c) {
     if temp_c <= 0 {
@@ -51,3 +65,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Demonstrates branching logic and comparison operators in practice
+// @ZNOTE: Control flow is essential for decision-making in SolvraCore applications
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

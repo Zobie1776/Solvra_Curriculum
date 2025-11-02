@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 2 Lesson: Async Programming
-// Goal: understand async/await, cooperative scheduling, and timeouts.
+//==================================================
+// File: async_programming.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Understand async/await, cooperative scheduling, and timeouts
+// Objective: Demonstrate asynchronous task execution with await patterns
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Understand async/await, cooperative scheduling, and timeouts.
 // Run with: ./scripts/build.sh lessons/tier2_intermediate/async_programming.svs
 // Try-It: change TASK_DELAY_MS or spawn an extra async job.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import <string> as strings;
 
@@ -54,3 +68,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Shows async/await for concurrent task execution with timing
+// @ZNOTE: SolvraCore scheduler enables cooperative multitasking for efficient resource use
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

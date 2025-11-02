@@ -1,9 +1,23 @@
-// ============================================================
-// Lesson 02: Variables and Types
-// Goal: master let, let mut, and const with SolvraScript types.
+//==================================================
+// File: 02_variables.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Master variables and type annotations in SolvraScript
+// Objective: Demonstrate let, let mut, and const with type safety
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Master let, let mut, and const with SolvraScript types.
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/02_variables.svs
 // Try-It: adjust starting_count and observe the self-check.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn add_points(score: int, points: int) {
     return score + points;
@@ -37,3 +51,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Shows variable mutability and type system basics
+// @ZNOTE: Prepares learner for more complex data structures
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

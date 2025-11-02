@@ -1,8 +1,22 @@
-// ============================================================
-// Exercise 02: Math Mini Challenge
+//==================================================
+// File: 02_challenge_math.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Apply arithmetic operations to solve a challenge problem
+// Objective: Fill in the TODO values to hit the target score with builtins
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
 // Task: Fill in the TODO values to hit the target score with builtins.
 // Tip: Each test prints feedback immediately so you can iterate quickly.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn target_expression(a, b, c) {
     // TODO: adjust the expression to reach the target 42 when using
@@ -28,3 +42,12 @@ fn run_challenge() {
 }
 
 run_challenge();
+
+//--------------------------------------------------
+// End comments: Hands-on math challenge requiring expression modification
+// @ZNOTE: Problem-solving exercises build confidence with SolvraCore arithmetic
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

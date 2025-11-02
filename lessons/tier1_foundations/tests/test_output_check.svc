@@ -1,3 +1,22 @@
+//==================================================
+// File: test_output_check.svc
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Verify compiled bytecode execution for Tier 1
+// Objective: Tier 1 compiled smoke test to validate bytecode format
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Tier 1 compiled smoke test - verifies bytecode execution.
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
+
 ; Tier 1 compiled smoke test
 .version 1
 .entry run
@@ -9,3 +28,12 @@
     call_native println 1
     return
 .end
+
+//--------------------------------------------------
+// End comments: Bytecode smoke test confirms VM can execute compiled artifacts
+// @ZNOTE: SolvraCore bytecode format enables efficient runtime execution
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

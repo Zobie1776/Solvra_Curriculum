@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 4 Lesson: AI Module Integration
-// Goal: bridge SolvraScript orchestration with a compiled SolvraCore driver.
+//==================================================
+// File: ai_module_integration.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Bridge SolvraScript orchestration with a compiled SolvraCore driver
+// Objective: Demonstrate AI micro-agent integration with compiled modules
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Bridge SolvraScript orchestration with a compiled SolvraCore driver.
 // Run with: ./scripts/build.sh lessons/tier4_expert/ai_module_integration.svs
 // Try-It: swap the driver module for your own compiled agent.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import "Solvra_pkg/solvra_core/samples/virtual_device_driver.svc" as driver_module;
 
@@ -28,3 +42,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Demonstrates SolvraScript orchestrating compiled AI/driver modules
+// @ZNOTE: Expert-level integration enables hybrid SolvraScript/SolvraCore architectures
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

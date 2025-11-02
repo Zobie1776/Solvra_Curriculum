@@ -1,8 +1,22 @@
-// ============================================================
-// Tier 1 Automated Test Runner
-// Goal: exercise each foundation lesson and report quick pass/fail notes.
+//==================================================
+// File: test_foundations.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Exercise each foundation lesson and report quick pass/fail notes
+// Objective: Automated test runner for Tier 1 foundation lessons
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Exercise each foundation lesson and report quick pass/fail notes.
 // Run with: ./scripts/test.sh tier1
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import "lessons/tier1_foundations/examples/01_hello_world.svs" as lesson01;
 import "lessons/tier1_foundations/examples/02_variables.svs" as lesson02;
@@ -25,3 +39,12 @@ fn run_tests() {
 }
 
 run_tests();
+
+//--------------------------------------------------
+// End comments: Automated testing ensures all foundation lessons execute correctly
+// @ZNOTE: Test suites validate SolvraCore curriculum integrity across updates
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

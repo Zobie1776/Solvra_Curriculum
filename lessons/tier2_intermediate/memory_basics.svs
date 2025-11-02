@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 2 Lesson: Memory Basics
-// Goal: inspect SolvraCore allocator stats from SolvraScript.
+//==================================================
+// File: memory_basics.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Inspect SolvraCore allocator stats from SolvraScript
+// Objective: Demonstrate memory tracking and allocation monitoring
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Inspect SolvraCore allocator stats from SolvraScript.
 // Run with: ./scripts/build.sh lessons/tier2_intermediate/memory_basics.svs
 // Try-It: adjust SAMPLE_COUNT to watch memory usage shift.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import <vector>;
 
@@ -52,3 +66,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Demonstrates memory monitoring through SolvraCore allocator stats
+// @ZNOTE: Memory contract provides visibility into runtime resource usage
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

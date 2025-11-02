@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
+#==================================================
+# File: learn.sh
+#==================================================
+# Author: ZobieLabs
+# License: Duality Public License (DPL v1.0)
+# Goal: Interactive lesson menu for SolvraScript curriculum
+# Objective: Dynamically scan and present lessons from tier1-4 folders
+#==================================================
+
+#==================================================
+# Import & Modules
+#==================================================
+
 set -euo pipefail
+
+#==================================================
+# Section 1.0 - Variables & Paths
+#==================================================
 
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 LOG_FILE="${ROOT}/logs/learn_session.log"
-
-mkdir -p "${ROOT}/logs"
 
 GREEN="\033[32m"
 BLUE="\033[34m"
@@ -13,38 +28,64 @@ MAGENTA="\033[35m"
 RED="\033[31m"
 RESET="\033[0m"
 
-mapfile -t LESSON_KEYS <<'LESSONS'
-1|Tier 1|Hello World Warmup|lessons/tier1_foundations/examples/01_hello_world.svs
-2|Tier 1|Variables & Types|lessons/tier1_foundations/examples/02_variables.svs
-3|Tier 2|Async Programming|lessons/tier2_intermediate/async_programming.svs
-4|Tier 2|Memory Basics|lessons/tier2_intermediate/memory_basics.svs
-5|Tier 3|Async Scheduler|lessons/tier3_advanced/async_scheduler.svs
-6|Tier 4|AI Module Integration|lessons/tier4_expert/ai_module_integration.svs
-LESSONS
+#==================================================
+# Section 2.0 - Menu Logic
+#==================================================
 
 function render_menu() {
   printf "${BLUE}========================================${RESET}\n"
-  printf "${BLUE}What do you want to learn today?${RESET}\n"
+  printf "${BLUE}📚 SolvraScript Curriculum${RESET}\n"
   printf "${BLUE}========================================${RESET}\n"
-  for line in "${LESSON_KEYS[@]}"; do
-    IFS='|' read -r key tier title path <<<"$line"
-    printf " ${YELLOW}%s${RESET}) %-8s %s\n" "$key" "$tier" "$title"
+
+  local idx=1
+
+  for tier_dir in "${ROOT}/lessons"/tier*; do
+    if [ ! -d "$tier_dir" ]; then continue; fi
+
+    tier_name=$(basename "$tier_dir" | sed 's/_/ /g' | sed 's/tier/Tier/')
+
+    printf "\n${YELLOW}%s:${RESET}\n" "$tier_name"
+
+    # Find all .svs and .svc files in examples, exercises, and root
+    while IFS= read -r lesson_file; do
+      lesson_rel="${lesson_file#${ROOT}/}"
+      lesson_title=$(basename "$lesson_file" .svs | basename .svc | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g')
+      printf " ${GREEN}%2d${RESET}) %s\n" "$idx" "$lesson_title"
+      LESSONS[$idx]="$lesson_rel"
+      ((idx++))
+    done < <(find "$tier_dir" -type f \( -name "*.svs" -o -name "*.svc" \) | sort)
   done
-  printf " ${YELLOW}q${RESET}) Quit\n"
+
+  printf "\n ${YELLOW}q${RESET}) Quit\n"
 }
+
+#==================================================
+# Section 3.0 - Logging
+#==================================================
+
+mkdir -p "${ROOT}/logs"
 
 function log_event() {
   local message=$1
-  printf "[learn] %s\n" "$message" >> "$LOG_FILE"
+  printf "[%s] %s\n" "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" "$message" >> "$LOG_FILE"
 }
+
+log_event "session_start"
+
+#==================================================
+# Section 4.0 - Runtime Execution
+#==================================================
+
+declare -A LESSONS
 
 while true; do
   render_menu
-  printf "${MAGENTA}Select an option:${RESET} "
+  printf "\n${MAGENTA}Select an option:${RESET} "
   read -r choice || exit 0
+
   case "$choice" in
     q|Q)
-      printf "${GREEN}See you next session!${RESET}\n"
+      printf "${GREEN}✨ See you next session!${RESET}\n"
       log_event "session_end"
       exit 0
       ;;
@@ -52,23 +93,25 @@ while true; do
       continue
       ;;
     *)
-      found=false
-      for line in "${LESSON_KEYS[@]}"; do
-        IFS='|' read -r key tier title path <<<"$line"
-        if [[ "$choice" == "$key" ]]; then
-          found=true
-          printf "${GREEN}Launching:%s %s${RESET}\n" "$tier" "$title"
-          log_event "launch ${path}"
-          SOLVRA_CURRICULUM_IMPORT="" "${ROOT}/scripts/build.sh" "$path"
-          printf "${GREEN}Lesson complete. Check logs for reflections.${RESET}\n"
-          log_event "complete ${path}"
-          break
-        fi
-      done
-      if [[ "$found" == false ]]; then
-        printf "${RED}Invalid choice. Try again.${RESET}\n"
+      if [[ -n "${LESSONS[$choice]:-}" ]]; then
+        printf "${GREEN}▶ Launching: ${LESSONS[$choice]}${RESET}\n"
+        log_event "launch ${LESSONS[$choice]}"
+        "${ROOT}/scripts/build.sh" "${LESSONS[$choice]}"
+        printf "${GREEN}✓ Lesson complete. Check logs for details.${RESET}\n"
+        log_event "complete ${LESSONS[$choice]}"
+      else
+        printf "${RED}❌ Invalid choice. Try again.${RESET}\n"
       fi
       ;;
   esac
   printf "\n"
 done
+
+#--------------------------------------------------
+# End comments: Dynamically builds lesson menu from filesystem structure
+# @ZNOTE: Supports scalable curriculum expansion without code changes
+#--------------------------------------------------
+
+#==================================================
+# End of file
+#==================================================

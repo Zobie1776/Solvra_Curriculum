@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 3 Lesson: Modules and Imports
-// Goal: blend standard, relative, and named imports for modular design.
+//==================================================
+// File: modules_and_imports.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Blend standard, relative, and named imports for modular design
+// Objective: Demonstrate module import patterns and namespace management
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Blend standard, relative, and named imports for modular design.
 // Run with: ./scripts/build.sh lessons/tier3_advanced/modules_and_imports.svs
 // Try-It: swap the imported helper module with your own library script.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import <vector>;
 import "lessons/tier1_foundations/examples/03_functions.svs" as names;
@@ -46,3 +60,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Demonstrates standard library and relative imports for code reuse
+// @ZNOTE: SolvraCore module system enables scalable project organization
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

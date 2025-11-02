@@ -1,9 +1,23 @@
-// ============================================================
-// Lesson 03: Functions and Parameters
-// Goal: practice defining functions with inputs, outputs, and reuse.
+//==================================================
+// File: 03_functions.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Practice defining functions with inputs, outputs, and reuse
+// Objective: Demonstrate function definition, parameters, return values, and reusable helper patterns
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Practice defining functions with inputs, outputs, and reuse.
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/03_functions.svs
 // Try-It: add your own helper that computes a custom metric.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn lesson_score(completed, bonus) {
     return completed * 2 + bonus;
@@ -42,3 +56,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Shows function composition and conditional return values
+// @ZNOTE: Functions are first-class in SolvraCore, enabling modular code organization
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

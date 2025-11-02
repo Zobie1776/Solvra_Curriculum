@@ -1,3 +1,22 @@
+//==================================================
+// File: compile_pipeline.svc
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Demonstrate compiled bytecode artifact structure
+// Objective: Tier 3 compiled artifact showing compilation pipeline stages
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Inspect via: ./scripts/build.sh lessons/tier3_advanced/compile_pipeline.svc
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
+
 ; Tier 3 compiled artifact: inspect via ./scripts/build.sh lessons/tier3_advanced/compile_pipeline.svc
 .version 1
 .entry main
@@ -18,3 +37,12 @@
     call_native println 1
     return
 .end
+
+//--------------------------------------------------
+// End comments: Bytecode artifact demonstrates compilation pipeline stages
+// @ZNOTE: Understanding bytecode format is key to mastering SolvraCore internals
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

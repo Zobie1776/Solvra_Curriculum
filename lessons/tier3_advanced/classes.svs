@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 3 Lesson: Class Patterns (Pre-Class Syntax)
-// Goal: simulate class-style organisation with object maps and helper methods.
+//==================================================
+// File: classes.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Simulate class-style organization with object maps and helper methods
+// Objective: Demonstrate object-oriented patterns using maps and functions
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Simulate class-style organisation with object maps and helper methods.
 // Run with: ./scripts/build.sh lessons/tier3_advanced/classes.svs
 // Try-It: add a new helper that clears the task list.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn make_robot(name) {
     return {
@@ -50,3 +64,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Shows object-oriented patterns with map-based state and helper functions
+// @ZNOTE: SolvraCore supports flexible data modeling through maps and functional patterns
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

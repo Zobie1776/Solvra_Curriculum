@@ -1,9 +1,23 @@
-// ============================================================
-// Lesson 01: Hello Solvra
-// Goal: print text, combine strings, feel the runtime loop.
+//==================================================
+// File: 01_hello_world.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Introduce SolvraScript syntax and runtime basics
+// Objective: Display "Hello World" and verify VM execution
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Print text, combine strings, feel the runtime loop.
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/01_hello_world.svs
 // Try-It: change learner_name and re-run for instant feedback.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn show_greeting(name) {
     println("Hello, ", name, "!");
@@ -29,3 +43,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Demonstrates successful VM execution of base syntax
+// @ZNOTE: Foundation for later runtime interaction lessons
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

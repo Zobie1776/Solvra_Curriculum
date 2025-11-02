@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 4 Lesson: Bytecode Visualizer
-// Goal: inspect a .svc file from SolvraScript and outline CLI tooling steps.
+//==================================================
+// File: bytecode_visualizer.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Inspect a .svc file from SolvraScript and outline CLI tooling steps
+// Objective: Demonstrate bytecode inspection and disassembly workflow
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Inspect a .svc file from SolvraScript and outline CLI tooling steps.
 // Run with: ./scripts/build.sh lessons/tier4_expert/bytecode_visualizer.svs
 // Try-It: point TARGET_FILE to your own compiled artifact.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 const TARGET_FILE = "lessons/tier3_advanced/compile_pipeline.svc";
 
@@ -24,3 +38,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Shows bytecode file inspection and disassembly workflow guidance
+// @ZNOTE: Understanding bytecode internals unlocks full SolvraCore debugging capabilities
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

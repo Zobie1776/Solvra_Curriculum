@@ -1,64 +1,79 @@
 #!/usr/bin/env bash
+#==================================================
+# File: build.sh
+#==================================================
+# Author: ZobieLabs
+# License: Duality Public License (DPL v1.0)
+# Goal: Build and execute SolvraScript lessons
+# Objective: Dynamically locate SolvraScript runtime and execute .svs/.svc lessons
+#==================================================
+
+#==================================================
+# Import & Modules
+#==================================================
+
 set -euo pipefail
 
+#==================================================
+# Section 1.0 - Variables & Paths
+#==================================================
+
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-TARGET_ARG=${1:-}
+SOLVRA_SCRIPT_BIN=""
+LOG_FILE=""
 
-if [[ -z "${TARGET_ARG}" ]]; then
-  echo "Usage: ./scripts/build.sh <path-to-.svs-or-.svc>" >&2
-  exit 1
-fi
+#==================================================
+# Section 2.0 - Runtime Detection
+#==================================================
 
-TARGET_PATH=$TARGET_ARG
-if [[ ! "${TARGET_PATH}" = /* ]]; then
-  TARGET_PATH="${ROOT}/${TARGET_PATH}"
-fi
-
-if [[ ! -f "${TARGET_PATH}" ]]; then
-  echo "Error: target file not found -> ${TARGET_PATH}" >&2
-  exit 1
-fi
-
-mkdir -p "${ROOT}/logs" "${ROOT}/build/compiled"
-
-RELATIVE_PATH=${TARGET_PATH#${ROOT}/}
-LESSON_ID=$(echo "${RELATIVE_PATH%.*}" | sed 's#[/ ]#_#g')
-LOG_FILE="${ROOT}/logs/${LESSON_ID}.log"
-
-GREEN="\033[32m"
-BLUE="\033[34m"
-YELLOW="\033[33m"
-RED="\033[31m"
-RESET="\033[0m"
-
-exec > >(tee -a "${LOG_FILE}") 2>&1
-
-echo -e "${BLUE}==> Solvra build runner${RESET}"
-echo -e "${BLUE}Target:${RESET} ${RELATIVE_PATH}"
-echo -e "${BLUE}Log:${RESET} logs/${LESSON_ID}.log"
-echo
-
-MANIFEST="${ROOT}/Solvra_pkg/Cargo.toml"
-EXT="${TARGET_PATH##*.}"
-
-if [[ "${EXT}" == "svs" ]]; then
-  echo -e "${YELLOW}Compiling to bytecode (.svc)...${RESET}"
-  cargo run --quiet --manifest-path "${MANIFEST}" --bin solvra_compile -- "${TARGET_PATH}"
-  COMPILED_SOURCE="${TARGET_PATH%.*}.svc"
-  if [[ -f "${COMPILED_SOURCE}" ]]; then
-    DEST="${ROOT}/build/compiled/${RELATIVE_PATH%.*}.svc"
-    mkdir -p "$(dirname "${DEST}")"
-    mv "${COMPILED_SOURCE}" "${DEST}"
-    echo -e "${GREEN}Saved bytecode:${RESET} build/compiled/${RELATIVE_PATH%.*}.svc"
+# Try common VM paths
+if [ ! -x "$SOLVRA_SCRIPT_BIN" ]; then
+  if [ -x "${ROOT}/solvra_script/bin/solvrascript" ]; then
+    SOLVRA_SCRIPT_BIN="${ROOT}/solvra_script/bin/solvrascript"
+  elif [ -x "${ROOT}/../SolvraOS/target/debug/solvrascript" ]; then
+    SOLVRA_SCRIPT_BIN="${ROOT}/../SolvraOS/target/debug/solvrascript"
+  else
+    echo "[ERROR] SolvraScript VM not found. Build it first:" >&2
+    echo "    cd ../SolvraOS && cargo build -p solvrascript" >&2
+    exit 1
   fi
-  echo -e "${YELLOW}Running source with solvrascript...${RESET}"
-  cargo run --quiet --manifest-path "${MANIFEST}" --bin solvrascript -- "${TARGET_PATH}"
-elif [[ "${EXT}" == "svc" ]]; then
-  echo -e "${YELLOW}Executing compiled module with solvrascript...${RESET}"
-  cargo run --quiet --manifest-path "${MANIFEST}" --bin solvrascript -- "${TARGET_PATH}"
-else
-  echo -e "${RED}Unsupported file extension: .${EXT}${RESET}" >&2
+fi
+
+#==================================================
+# Section 3.0 - Argument Validation
+#==================================================
+
+if [ $# -lt 1 ]; then
+  echo "[ERROR] Missing lesson path argument." | tee -a "$LOG_FILE"
   exit 1
 fi
 
-echo -e "${GREEN}Build runner finished successfully.${RESET}"
+LESSON_PATH="$1"
+
+#==================================================
+# Section 4.0 - Logging
+#==================================================
+
+mkdir -p "${ROOT}/logs"
+
+RELATIVE_PATH=${LESSON_PATH#${ROOT}/}
+LESSON_ID=$(echo "${RELATIVE_PATH%.*}" | sed 's#[/ ]#_#g')
+LOG_FILE="${ROOT}/logs/build.log"
+
+#==================================================
+# Section 5.0 - Runtime Execution
+#==================================================
+
+echo "[INFO] Running lesson: $LESSON_PATH" | tee -a "$LOG_FILE"
+"$SOLVRA_SCRIPT_BIN" "$ROOT/$LESSON_PATH" "$@" 2>&1 | tee -a "$LOG_FILE"
+
+echo "[INFO] Lesson completed successfully." | tee -a "$LOG_FILE"
+
+#--------------------------------------------------
+# End comments: Demonstrates successful VM execution of base syntax
+# @ZNOTE: Foundation for later runtime interaction lessons
+#--------------------------------------------------
+
+#==================================================
+# End of file
+#==================================================

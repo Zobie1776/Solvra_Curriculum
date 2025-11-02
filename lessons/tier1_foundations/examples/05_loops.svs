@@ -1,9 +1,23 @@
-// ============================================================
-// Lesson 05: Loops and Iteration
-// Goal: compare while and for loops in SolvraScript.
+//==================================================
+// File: 05_loops.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Compare while and for loops in SolvraScript
+// Objective: Demonstrate iteration patterns using both while and for loop constructs
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Compare while and for loops in SolvraScript.
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/05_loops.svs
 // Try-It: extend the challenge_steps array with your own milestones.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn sum_with_while(values) {
     let mut total = 0;
@@ -47,3 +61,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Compares while and for loop patterns for array iteration
+// @ZNOTE: SolvraCore supports multiple iteration styles for flexible control flow
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

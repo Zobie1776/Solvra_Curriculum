@@ -1,9 +1,23 @@
-// ============================================================
-// Lesson 06: Math and Builtins
-// Goal: practice SolvraScript arithmetic helpers and formatting.
+//==================================================
+// File: 06_basic_math.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Practice SolvraScript arithmetic helpers and formatting
+// Objective: Demonstrate built-in math functions and arithmetic operations
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Practice SolvraScript arithmetic helpers and formatting.
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/06_basic_math.svs
 // Try-It: change the quiz numbers or add a random challenge.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 fn show_operations(a, b) {
     println("Inputs -> ", a, ", ", b);
@@ -34,3 +48,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Introduces arithmetic builtins and random number generation
+// @ZNOTE: SolvraCore provides rich math primitives for computational tasks
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

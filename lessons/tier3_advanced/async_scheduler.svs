@@ -1,9 +1,23 @@
-// ============================================================
-// Tier 3 Lesson: Async Scheduler Deep Dive
-// Goal: coordinate multiple async tasks and surface progress events.
+//==================================================
+// File: async_scheduler.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Coordinate multiple async tasks and surface progress events
+// Objective: Demonstrate advanced async patterns with event-driven coordination
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Coordinate multiple async tasks and surface progress events.
 // Run with: ./scripts/build.sh lessons/tier3_advanced/async_scheduler.svs
 // Try-It: add a third task or adjust the timeout value.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import <string> as strings;
 
@@ -52,3 +66,12 @@ fn run_demo() {
 fn main() {
     run_demo();
 }
+
+//--------------------------------------------------
+// End comments: Advanced async coordination with event-driven task tracking
+// @ZNOTE: SolvraCore event system enables reactive programming patterns
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

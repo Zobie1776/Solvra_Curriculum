@@ -1,3 +1,22 @@
+//==================================================
+// File: solvra_runtime_internals.svc
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Demonstrate runtime internals through compiled bytecode
+// Objective: Tier 4 compiled artifact narrating runtime boot sequence
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
+// Runtime internals narrator - shows boot sequence stages.
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
+
 ; Tier 4 compiled artifact: runtime internals narrator
 .version 1
 .entry run
@@ -18,3 +37,12 @@
     call_native println 1
     return
 .end
+
+//--------------------------------------------------
+// End comments: Bytecode artifact narrating SolvraCore runtime boot sequence
+// @ZNOTE: Expert understanding of runtime internals enables deep system optimization
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

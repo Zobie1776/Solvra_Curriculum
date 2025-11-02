@@ -1,8 +1,22 @@
-// ============================================================
-// Exercise 01: Hello World Quiz
+//==================================================
+// File: 01_quiz_hello_world.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Test understanding of string concatenation and function calls
+// Objective: Predict the output of greeting helpers and verify the results
+//==================================================
+
+//==================================================
+// Section 1.0 - Lesson Objective
+//==================================================
+
 // Task: Predict the output of greeting helpers and verify the results.
 // Tip: Update the answers array to test yourself before revealing the key.
-// ============================================================
+
+//==================================================
+// Section 2.0 - Example Execution
+//==================================================
 
 import <string> as strings;
 
@@ -48,3 +62,12 @@ fn run_quiz() {
 }
 
 run_quiz();
+
+//--------------------------------------------------
+// End comments: Quiz format for testing string manipulation and function call comprehension
+// @ZNOTE: Interactive exercises help reinforce SolvraScript fundamentals through practice
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================
