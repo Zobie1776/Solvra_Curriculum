@@ -4,7 +4,7 @@
 // Author: ZobieLabs
 // License: Duality Public License (DPL v1.0)
 // Goal: Introduce SolvraScript syntax and runtime basics
-// Objective: Display "Hello World" and verify VM execution
+// Objective: Demonstrate interactive input/output with inp()
 //==================================================
 
 //==================================================
@@ -24,20 +24,16 @@ fn show_greeting(name) {
 }
 
 fn run_demo() {
-    let learner_name = "Solvra Explorer";
-    println("Welcome to SolvraScript!\n");
-    show_greeting(learner_name);
-    println("Call println again to add a blank line.");
-    println("");
-
-    let motivation = "You are about to run real Solvra bytecode.";
-    println(motivation);
+    println("Welcome to SolvraScript!");
+    let learner_name = inp("What's your name? ");
+    println("Hello, " + learner_name + "!");
+    println("Now you're officially part of the Solvra ecosystem.");
 
     // Quick self-check: confirms show_greeting() works.
-    println("[Self Check] Greeting for Tester ->");
+    println("\n[Self Check] Greeting for Tester ->");
     show_greeting("Tester");
 
-    println("Try-It Yourself: change learner_name to your name.");
+    println("\nTry-It Yourself: change learner_name prompt and rerun.");
 }
 
 fn main() {
@@ -45,8 +41,8 @@ fn main() {
 }
 
 //--------------------------------------------------
-// End comments: Demonstrates successful VM execution of base syntax
-// @ZNOTE: Foundation for later runtime interaction lessons
+// The lesson demonstrates real-time user input and string concatenation.
+// @ZNOTE: Foundation for later interactive exercises and async examples.
 //--------------------------------------------------
 
 //==================================================

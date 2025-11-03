@@ -45,14 +45,32 @@ fn robot_summary(robot) {
 fn run_demo() {
     println("=== Object-oriented patterns ===");
 
-    let mut scout = make_robot("Scout-7");
+    // Try-It: Create a custom robot with your own name and tasks
+    let robot_name = inp("Enter robot name (or press Enter for 'Scout-7'): ");
+    let custom_task = inp("Enter a custom task (or press Enter to skip): ");
+
+    let name = "Scout-7";
+    if len(robot_name) > 0 {
+        name = robot_name;
+    }
+
+    let mut scout = make_robot(name);
     scout = robot_add_task(scout, "Scan modules");
     scout = robot_add_task(scout, "Report status");
 
+    if len(custom_task) > 0 {
+        scout = robot_add_task(scout, custom_task);
+    }
+
     robot_summary(scout);
 
-    // Quick self-check: validate the robot stored exactly two tasks.
-    if len(scout.tasks) == 2 {
+    // Quick self-check: validate the robot stored the expected tasks.
+    let expected_tasks = 2;
+    if len(custom_task) > 0 {
+        expected_tasks = 3;
+    }
+
+    if len(scout.tasks) == expected_tasks {
         println("[Self Check] Robot task ledger looks good.");
     } else {
         println("[Self Check] Task ledger mismatch.");

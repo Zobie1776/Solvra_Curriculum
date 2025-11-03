@@ -21,7 +21,15 @@
 
 import <vector>;
 
-const SAMPLE_COUNT = 3;
+// Try-It: Enter custom allocation count when prompted, or press Enter for default
+let count_input = inp("Enter number of vectors to allocate (or press Enter for 3): ");
+let SAMPLE_COUNT = 3;
+if len(count_input) > 0 {
+    SAMPLE_COUNT = parse_int(count_input);
+    if SAMPLE_COUNT < 1 {
+        SAMPLE_COUNT = 3;
+    }
+}
 
 fn log_stats(stage) {
     let stats = core_memory_stats();

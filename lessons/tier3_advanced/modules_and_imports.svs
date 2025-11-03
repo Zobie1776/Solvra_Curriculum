@@ -39,8 +39,28 @@ fn summarize_roster(roster) {
 
 fn run_demo() {
     println("=== Module loader tour ===");
+
+    // Try-It: Customize the roster with your own entries
+    let custom_first = inp("Enter first name for badge 1 (or press Enter for 'Riley'): ");
+    let custom_last = inp("Enter last name for badge 1 (or press Enter for 'Cole'): ");
+    let custom_role = inp("Enter role for badge 1 (or press Enter for 'Scheduler'): ");
+
+    let first = "Riley";
+    let last = "Cole";
+    let role = "Scheduler";
+
+    if len(custom_first) > 0 {
+        first = custom_first;
+    }
+    if len(custom_last) > 0 {
+        last = custom_last;
+    }
+    if len(custom_role) > 0 {
+        role = custom_role;
+    }
+
     let names_list = [
-        names.badge_text("Riley", "Cole", "Scheduler"),
+        names.badge_text(first, last, role),
         names.badge_text("Morgan", "Diaz", "Runtime"),
     ];
 

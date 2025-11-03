@@ -21,7 +21,15 @@
 
 import <string> as strings;
 
-const TASK_DELAY_MS = 150;
+// Try-It: Enter custom delay values when prompted, or press Enter for defaults
+let delay_input = inp("Enter task delay in milliseconds (or press Enter for 150ms): ");
+let TASK_DELAY_MS = 150;
+if len(delay_input) > 0 {
+    TASK_DELAY_MS = parse_int(delay_input);
+    if TASK_DELAY_MS < 0 {
+        TASK_DELAY_MS = 150;
+    }
+}
 
 fn async_fetch(label, delay_ms) {
     println("[", label, "] scheduling work");

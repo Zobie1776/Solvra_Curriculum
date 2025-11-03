@@ -38,13 +38,12 @@ fn show_value(label, value) {
 }
 
 fn run_demo() {
-    let score = lesson_score(4, 3);
+    let completed = inp("Lessons completed: ");
+    let bonus = inp("Bonus points: ");
+
+    let score = lesson_score(completed, bonus);
     show_value("Computed score ->", score);
     show_value("Feedback ->", feedback(score));
-
-    let alt_score = lesson_score(6, 1);
-    show_value("Second score ->", alt_score);
-    show_value("Feedback ->", feedback(alt_score));
 
     // Quick self-check: lesson_score(5, 0) should return 10.
     let check = lesson_score(5, 0);
@@ -58,8 +57,8 @@ fn main() {
 }
 
 //--------------------------------------------------
-// End comments: Shows function composition and conditional return values
-// @ZNOTE: Functions are first-class in SolvraCore, enabling modular code organization
+// End comments: Demonstrates function parameters and return values
+// @ZNOTE: Functions are the building blocks for modular SolvraScript programs
 //--------------------------------------------------
 
 //==================================================

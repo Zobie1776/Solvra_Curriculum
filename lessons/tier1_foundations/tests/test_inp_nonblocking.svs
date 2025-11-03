@@ -1,0 +1,52 @@
+//==================================================
+// File: test_inp_nonblocking.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Validate inp() non-blocking execution
+// Objective: Test that inp() doesn't hang in non-interactive mode (simulate piped input)
+//==================================================
+
+//==================================================
+// Section 1.0 - Test Objective
+//==================================================
+
+// Ensure inp() function doesn't hang when input is unavailable
+// Test with: echo "" | ./scripts/build.sh lessons/tier1_foundations/tests/test_inp_nonblocking.svs
+
+//==================================================
+// Section 2.0 - Test Execution
+//==================================================
+
+fn test_inp_returns_empty() {
+    println("[TEST] Testing inp() with empty input...");
+
+    let result = inp("Enter value: ");
+
+    if len(result) == 0 {
+        println("✓ Correct! inp() returned empty string");
+        return true;
+    } else {
+        println("✗ Try again. Expected empty, got: ", result);
+        return false;
+    }
+}
+
+fn main() {
+    let pass = test_inp_returns_empty();
+
+    if pass {
+        println("[TEST] ✓ PASS - inp() handles empty input correctly");
+    } else {
+        println("[TEST] ✗ FAIL - inp() did not handle empty input");
+    }
+}
+
+//--------------------------------------------------
+// End comments: Validates inp() doesn't hang in automated testing
+// @ZNOTE: Critical for CI/CD pipelines and automated lesson validation
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

@@ -36,7 +36,7 @@ fn show_value(label, value) {
 }
 
 fn run_demo() {
-    let reading = 18;
+    let reading = inp("Enter temperature in Celsius: ");
     let summary = describe_temperature(reading);
     show_value("Current reading ->", reading);
     show_value("Feels ->", summary);

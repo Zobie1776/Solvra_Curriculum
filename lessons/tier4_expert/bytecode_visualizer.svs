@@ -23,13 +23,30 @@ const TARGET_FILE = "lessons/tier3_advanced/compile_pipeline.svc";
 
 fn run_demo() {
     println("=== Bytecode preview ===");
-    let contents = read_file(TARGET_FILE);
-    println("Loaded ", TARGET_FILE, " -> ", len(contents), " bytes");
+
+    // Try-It: Choose a bytecode file to inspect
+    let custom_file = inp("Enter path to .svc file (or press Enter for default): ");
+    let show_disasm_guide = inp("Show disassembly guide? (y/n, or press Enter for yes): ");
+
+    let target = TARGET_FILE;
+    if len(custom_file) > 0 {
+        target = custom_file;
+    }
+
+    let contents = read_file(target);
+    println("Loaded ", target, " -> ", len(contents), " bytes");
 
     println("First chunk:");
     println(contents);
 
-    println("Next steps:\n 1. cargo run --bin solvra_disasm -- ", TARGET_FILE, "\n 2. Compare disassembly with runtime output\n 3. Map each opcode to docs/svc_format.md");
+    if show_disasm_guide == "y" || show_disasm_guide == "Y" || len(show_disasm_guide) == 0 {
+        println("\n=== Disassembly Guide ===");
+        println("Next steps:\n 1. cargo run --bin solvra_disasm -- ", target, "\n 2. Compare disassembly with runtime output\n 3. Map each opcode to docs/svc_format.md");
+        println("\nAdvanced options:");
+        println(" - Use hex editor to inspect raw bytecode structure");
+        println(" - Compare multiple .svc files to understand patterns");
+        println(" - Cross-reference with SolvraCore VM implementation");
+    }
 
     println("[Self Check] If the file failed to load, verify the path and rerun.");
     println("Try-It Yourself: compile a lesson with ./scripts/build.sh and disassemble it.");

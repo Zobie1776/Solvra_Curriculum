@@ -19,6 +19,13 @@
 // Section 2.0 - Example Execution
 //==================================================
 
+fn factorial(n) {
+    if n <= 1 {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
 fn show_operations(a, b) {
     println("Inputs -> ", a, ", ", b);
     println("Add -> ", a + b);
@@ -28,6 +35,10 @@ fn show_operations(a, b) {
 }
 
 fn run_demo() {
+    println("Now you try — enter a number to calculate its factorial:");
+    let n = inp("Number: ");
+    println("Factorial of " + n + " is " + factorial(n));
+
     show_operations(9, 3);
 
     let random_pick = random(1, 10);

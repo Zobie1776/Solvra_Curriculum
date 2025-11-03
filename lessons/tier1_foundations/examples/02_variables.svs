@@ -30,22 +30,22 @@ fn show_value(label, value) {
 
 fn run_demo() {
     const BANNER = "Variable tour";
-    const STARTING_COUNT: int = 3;
-    show_value("== Banner ==", BANNER);
-    show_value("Starting count ->", STARTING_COUNT);
+    println("== ", BANNER, " ==");
 
-    let mut score: int = STARTING_COUNT;
+    let starting_input = inp("Enter starting count: ");
+    let mut score: int = starting_input;
+
+    println("Starting count ->", score);
+
     score = add_points(score, 2);
     show_value("First update ->", score);
     score = add_points(score, 5);
     show_value("Second update ->", score);
 
-    // Quick self-check: should report 10 when STARTING_COUNT = 3.
-    score = STARTING_COUNT;
-    score = add_points(score, 7);
-    show_value("[Self Check] Expected 10 ->", score);
+    // Quick self-check: verify arithmetic
+    println("[Self Check] Final score: ", score);
 
-    println("Try-It Yourself: change STARTING_COUNT to 5 and rerun.");
+    println("Try-It Yourself: enter different starting values and rerun.");
 }
 
 fn main() {

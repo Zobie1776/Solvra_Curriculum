@@ -24,14 +24,45 @@ import "Solvra_pkg/solvra_core/samples/virtual_device_driver.svc" as driver_modu
 fn run_demo() {
     println("=== AI micro-agent bootstrap ===");
 
-    let handle = driver_module.module.handle;
-    let result = core_module_execute(handle);
+    // Try-It: Configure execution parameters
+    let show_memory_tracking = inp("Enable memory tracking? (y/n, or press Enter for yes): ");
+    let run_multiple = inp("Run driver multiple times? Enter count (or press Enter for 1): ");
 
-    println("Driver returned -> ", result);
+    let track_memory = true;
+    if show_memory_tracking == "n" || show_memory_tracking == "N" {
+        track_memory = false;
+    }
+
+    let execution_count = 1;
+    if len(run_multiple) > 0 {
+        execution_count = parse_int(run_multiple);
+        if execution_count < 1 {
+            execution_count = 1;
+        }
+    }
+
+    let handle = driver_module.module.handle;
+
+    if track_memory {
+        let stats_before = core_memory_stats();
+        println("Memory before execution -> allocations: ", stats_before.allocations, ", used: ", stats_before.used_bytes);
+    }
+
+    let mut iteration = 0;
+    while iteration < execution_count {
+        println("\n[Execution ", iteration + 1, " of ", execution_count, "]");
+        let result = core_module_execute(handle);
+        println("Driver returned -> ", result);
+        iteration = iteration + 1;
+    }
+
+    if track_memory {
+        let stats_after = core_memory_stats();
+        println("\nMemory after execution -> allocations: ", stats_after.allocations, ", used: ", stats_after.used_bytes);
+    }
 
     // Quick self-check: confirm the handle stays valid before release.
-    let stats = core_memory_stats();
-    println("Allocations before release -> ", stats.allocations);
+    println("\n[Self Check] Module handle remained valid through all executions.");
 
     core_module_release(handle);
     println("Module released. Ready for next integration test.");

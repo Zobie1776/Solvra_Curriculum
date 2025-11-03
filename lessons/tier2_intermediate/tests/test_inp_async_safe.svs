@@ -1,0 +1,45 @@
+//==================================================
+// File: test_inp_async_safe.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Validate inp() works correctly with async contexts
+// Objective: Ensure lessons with inp() still compile and execute when async is present
+//==================================================
+
+//==================================================
+// Section 1.0 - Test Objective
+//==================================================
+
+// Verify inp() doesn't interfere with async/await patterns
+// Test that interactive lessons compile and run in automated environments
+
+//==================================================
+// Section 2.0 - Test Execution
+//==================================================
+
+async fn async_with_input() {
+    println("[TEST] Testing inp() in async context...");
+    let value = inp("Enter test value: ");
+    println("Received: ", value);
+    return len(value);
+}
+
+fn main() {
+    println("[TEST] Starting async + inp() validation...");
+
+    let task = async async_with_input();
+    let result = await task;
+
+    println("[TEST] ✓ PASS - inp() executed without hanging");
+    println("[TEST] Result length: ", result);
+}
+
+//--------------------------------------------------
+// End comments: Confirms inp() is safe in async workflows
+// @ZNOTE: Essential for intermediate+ lessons with async patterns
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

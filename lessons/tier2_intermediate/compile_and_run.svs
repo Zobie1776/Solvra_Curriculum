@@ -24,7 +24,17 @@ import "Solvra_pkg/solvra_core/samples/add_numbers.svc" as add_module;
 fn run_demo() {
     println("=== Compiled module execution ===");
 
+    // Try-It: Choose whether to view detailed module info
+    let show_details = inp("Show detailed module info? (y/n, or press Enter for no): ");
+
     let handle = add_module.module.handle;
+
+    if show_details == "y" || show_details == "Y" {
+        println("Module handle: ", handle);
+        let stats = core_memory_stats();
+        println("Memory before execution -> ", stats.used_bytes, " bytes used");
+    }
+
     let result = core_module_execute(handle);
     println("add_numbers.svc returned -> ", result);
 
