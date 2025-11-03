@@ -11,16 +11,14 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Blend standard, relative, and named imports for modular design.
+// Interactive guided tutorial: Master module imports
 // Run with: ./scripts/build.sh lessons/tier3_advanced/modules_and_imports.svs
-// Try-It: swap the imported helper module with your own library script.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 import <vector>;
-import "lessons/tier1_foundations/examples/03_functions.svs" as names;
 
 fn build_roster(members) {
     let mut roster = vector.make();
@@ -31,58 +29,186 @@ fn build_roster(members) {
 }
 
 fn summarize_roster(roster) {
-    println("Roster size -> ", vector.length(roster));
+    println("Roster size: ", vector.length(roster));
     for person in roster {
-        println(" - ", person);
+        println("  - ", person);
     }
 }
 
-fn run_demo() {
-    println("=== Module loader tour ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 3: Modules and Imports                              ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    // Try-It: Customize the roster with your own entries
-    let custom_first = inp("Enter first name for badge 1 (or press Enter for 'Riley'): ");
-    let custom_last = inp("Enter last name for badge 1 (or press Enter for 'Cole'): ");
-    let custom_role = inp("Enter role for badge 1 (or press Enter for 'Scheduler'): ");
+    println("📚 What you'll learn:");
+    println("  • How to import standard library modules");
+    println("  • How to use relative imports for project code");
+    println("  • How to manage namespaces with aliases");
+    println("  • Best practices for modular design");
+    println();
 
-    let first = "Riley";
-    let last = "Cole";
-    let role = "Scheduler";
+    println("Let's begin!");
+    println();
 
-    if len(custom_first) > 0 {
-        first = custom_first;
-    }
-    if len(custom_last) > 0 {
-        last = custom_last;
-    }
-    if len(custom_role) > 0 {
-        role = custom_role;
-    }
+    // Concept 1: Standard Library Imports
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Standard Library Imports");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Import standard library modules with angle brackets:");
+    println("  import <vector>;");
+    println("  import <string> as strings;");
+    println();
+    println("Standard library provides:");
+    println("  • Data structures (vector, map, set)");
+    println("  • String utilities");
+    println("  • Math functions");
+    println("  • System interfaces");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Relative Imports
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Relative Imports");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Import your own modules with relative paths:");
+    println("  import \"path/to/module.svs\" as my_module;");
+    println();
+    println("Example:");
+    println("  import \"lessons/helpers.svs\" as helpers;");
+    println();
+    println("This enables code reuse across your project!");
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Using Imported Modules
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Using Imported Modules");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Access module functions with dot notation:");
+    println("  let v = vector.make();");
+    println("  v = vector.append(v, \"item\");");
+    println();
+    println("Let's build a roster using the vector module:");
+    println();
 
     let names_list = [
-        names.badge_text(first, last, role),
-        names.badge_text("Morgan", "Diaz", "Runtime"),
+        "Riley Cole - Scheduler",
+        "Morgan Diaz - Runtime",
     ];
 
     let roster = build_roster(names_list);
     summarize_roster(roster);
+    println();
 
-    // Quick self-check: ensure roster kept both generated names.
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Modular Architecture
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Benefits of Modular Design");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Module systems enable:");
+    println("  • Code organization (logical separation)");
+    println("  • Reusability (DRY principle)");
+    println("  • Namespace management (avoid conflicts)");
+    println("  • Team collaboration (parallel development)");
+    println();
+    println("SolvraCore's module system scales from scripts to large projects!");
+    println();
+
+    // Quick self-check
     if vector.length(roster) == 2 {
-        println("[Self Check] Imports returned the expected two badges.");
+        println("[Self Check] Imports returned expected roster!");
     } else {
-        println("[Self Check] Roster length mismatch.");
+        println("[Self Check] Roster length mismatch!");
     }
+    println();
 
-    println("Try-It Yourself: import modules/modules/math_utils.svs and append square outputs.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+
+    println("Question: How do you import standard library modules?");
+    println("  a) import \"module\"");
+    println("  b) import <module>");
+    println("  c) require(module)");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! Use angle brackets for standard library.");
+        println("  Example: import <vector>;");
+    } else {
+        println("✗ Not quite. The correct answer is 'b'.");
+        println("  Standard library: import <module>");
+        println("  Project files: import \"path/to/file.svs\"");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ Standard library imports with <module>");
+    println("  ✓ Relative imports for project code");
+    println("  ✓ Namespace management with aliases");
+    println("  ✓ Benefits of modular architecture");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraCore's module system enables scalable project");
+    println("  organization, from simple scripts to complex applications!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to Tier 4 lessons");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Excellent! You've completed Tier 3!");
+        println("   Ready for expert-level Tier 4!");
+    } else {
+        println("👋 Thanks for learning!");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
-// End comments: Demonstrates standard library and relative imports for code reuse
 // @ZNOTE: SolvraCore module system enables scalable project organization
 //--------------------------------------------------
 

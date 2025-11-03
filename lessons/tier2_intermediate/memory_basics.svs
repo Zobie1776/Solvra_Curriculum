@@ -11,31 +11,23 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Inspect SolvraCore allocator stats from SolvraScript.
+// Interactive guided tutorial: Monitor and manage memory
 // Run with: ./scripts/build.sh lessons/tier2_intermediate/memory_basics.svs
-// Try-It: adjust SAMPLE_COUNT to watch memory usage shift.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 import <vector>;
 
-// Try-It: Enter custom allocation count when prompted, or press Enter for default
-let count_input = inp("Enter number of vectors to allocate (or press Enter for 3): ");
-let SAMPLE_COUNT = 3;
-if len(count_input) > 0 {
-    SAMPLE_COUNT = parse_int(count_input);
-    if SAMPLE_COUNT < 1 {
-        SAMPLE_COUNT = 3;
-    }
-}
+const SAMPLE_COUNT = 3;
 
 fn log_stats(stage) {
     let stats = core_memory_stats();
-    println(stage, " capacity -> ", stats.capacity_bytes);
-    println(stage, " used      -> ", stats.used_bytes);
-    println(stage, " allocations -> ", stats.allocations);
+    println(stage, ":");
+    println("  Capacity: ", stats.capacity_bytes, " bytes");
+    println("  Used:     ", stats.used_bytes, " bytes");
+    println("  Allocations: ", stats.allocations);
 }
 
 fn allocate_vectors(count) {
@@ -51,28 +43,193 @@ fn allocate_vectors(count) {
     return data;
 }
 
-fn run_demo() {
-    println("=== Memory contract stats ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 2: Memory Basics and Monitoring                     ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
+
+    println("📚 What you'll learn:");
+    println("  • How to monitor memory usage with core_memory_stats()");
+    println("  • How to track allocations and capacity");
+    println("  • Why memory management matters in embedded systems");
+    println("  • How SolvraCore's memory contract works");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: Why Memory Matters
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Why Memory Management Matters");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("In embedded systems and resource-constrained environments:");
+    println("  • Memory is limited (KB or MB, not GB)");
+    println("  • Memory leaks can crash the system");
+    println("  • Efficient allocation improves performance");
+    println("  • Tracking usage helps debug issues");
+    println();
+    println("SolvraCore provides visibility into memory usage through");
+    println("the memory contract API.");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: core_memory_stats()
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Monitoring with core_memory_stats()");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Use core_memory_stats() to inspect allocator state:");
+    println("  let stats = core_memory_stats();");
+    println("  println(stats.capacity_bytes);  // Total capacity");
+    println("  println(stats.used_bytes);      // Currently used");
+    println("  println(stats.allocations);     // Number of allocations");
+    println();
+    println("Let's check the current state:");
+    println();
     log_stats("[Start]");
+    println();
 
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Tracking Allocations
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Tracking Allocations");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Let's allocate some vectors and watch memory change:");
+    println("  We'll create ", SAMPLE_COUNT, " vectors");
+    println("  Each vector will hold 2 elements");
+    println();
+
+    println("Allocating ", SAMPLE_COUNT, " vectors...");
     let payload = allocate_vectors(SAMPLE_COUNT);
-    println("Allocated ", len(payload), " vector(s)");
+    println("Created ", len(payload), " vector(s)");
+    println();
 
-    log_stats("[After alloc]");
+    log_stats("[After Allocation]");
+    println();
 
-    // Quick self-check: confirm we recorded at least one allocation.
+    println("Notice how the stats changed!");
+    println("  • used_bytes increased (vectors consume memory)");
+    println("  • allocations increased (new objects created)");
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Memory Contract Benefits
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: SolvraCore's Memory Contract");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("The memory contract provides:");
+    println("  • Runtime visibility into allocations");
+    println("  • Detection of memory leaks");
+    println("  • Performance profiling data");
+    println("  • Debug information for optimization");
+    println();
+    println("Use cases:");
+    println("  • Embedded systems with strict memory limits");
+    println("  • Long-running services that must avoid leaks");
+    println("  • Performance-critical applications");
+    println("  • AI agents managing resources");
+    println();
+
+    // Quick self-check
     let stats = core_memory_stats();
     if stats.allocations > 0 {
-        println("[Self Check] Allocator is tracking new work.");
+        println("[Self Check] Allocator is tracking work!");
+        println("  We've recorded ", stats.allocations, " allocation(s)");
     } else {
-        println("[Self Check] Unexpected zero allocations.");
+        println("[Self Check] Unexpected zero allocations - investigate!");
     }
+    println();
 
-    println("Try-It Yourself: bump SAMPLE_COUNT to 10 and re-run to compare.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: Which field shows how much memory is currently used?");
+    println("  a) capacity_bytes");
+    println("  b) used_bytes");
+    println("  c) allocations");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! used_bytes shows current memory consumption.");
+        println("  capacity_bytes = total available memory");
+        println("  used_bytes = currently consumed memory");
+        println("  allocations = number of allocation events");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — used_bytes");
+        println("  capacity_bytes tells you the total available");
+        println("  used_bytes tells you how much is currently in use");
+        println("  allocations is a count, not a size measurement");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to monitor memory with core_memory_stats()");
+    println("  ✓ How to track capacity, usage, and allocations");
+    println("  ✓ Why memory management is critical for embedded systems");
+    println("  ✓ How SolvraCore's memory contract provides visibility");
+    println();
+    println("Key Takeaway:");
+    println("  The memory contract provides visibility into runtime resource");
+    println("  usage. This is essential for embedded systems, long-running");
+    println("  services, and performance-critical applications!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to Tier 3 lessons");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Excellent! You've completed Tier 2!");
+        println("   Ready for Tier 3? Run:");
+        println("   ./scripts/learn.sh");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

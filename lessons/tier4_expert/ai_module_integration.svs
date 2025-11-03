@@ -11,71 +11,196 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Bridge SolvraScript orchestration with a compiled SolvraCore driver.
+// Interactive guided tutorial: Expert AI module integration
 // Run with: ./scripts/build.sh lessons/tier4_expert/ai_module_integration.svs
-// Try-It: swap the driver module for your own compiled agent.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 import "Solvra_pkg/solvra_core/samples/virtual_device_driver.svc" as driver_module;
 
-fn run_demo() {
-    println("=== AI micro-agent bootstrap ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 4 Expert: AI Module Integration                     ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    // Try-It: Configure execution parameters
-    let show_memory_tracking = inp("Enable memory tracking? (y/n, or press Enter for yes): ");
-    let run_multiple = inp("Run driver multiple times? Enter count (or press Enter for 1): ");
+    println("📚 What you'll learn:");
+    println("  • How to integrate AI micro-agents with compiled modules");
+    println("  • How to orchestrate hybrid SolvraScript/SolvraCore systems");
+    println("  • How to track resource usage in agent systems");
+    println("  • Advanced patterns for autonomous agent architectures");
+    println();
 
-    let track_memory = true;
-    if show_memory_tracking == "n" || show_memory_tracking == "N" {
-        track_memory = false;
-    }
+    println("Let's begin!");
+    println();
 
-    let execution_count = 1;
-    if len(run_multiple) > 0 {
-        execution_count = parse_int(run_multiple);
-        if execution_count < 1 {
-            execution_count = 1;
-        }
-    }
+    // Concept 1: Hybrid Architectures
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Hybrid SolvraScript/SolvraCore Architectures");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Expert-level SolvraCore applications combine:");
+    println("  • SolvraScript for orchestration and coordination");
+    println("  • Compiled .svc modules for performance-critical code");
+    println("  • Async patterns for concurrent agent execution");
+    println("  • Memory tracking for resource-constrained systems");
+    println();
+    println("This hybrid approach maximizes flexibility AND performance!");
+    println();
 
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: AI Micro-Agents
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: AI Micro-Agent Pattern");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("AI micro-agents are small, autonomous components that:");
+    println("  • Make decisions based on sensor data");
+    println("  • Coordinate with other agents via events");
+    println("  • Execute compiled drivers for efficiency");
+    println("  • Operate within strict resource constraints");
+    println();
+    println("Perfect for embedded AI, IoT, and edge computing!");
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Integration Execution
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Executing the Driver Integration");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Loading virtual device driver module...");
     let handle = driver_module.module.handle;
+    println("Module handle: ", handle);
+    println();
 
-    if track_memory {
-        let stats_before = core_memory_stats();
-        println("Memory before execution -> allocations: ", stats_before.allocations, ", used: ", stats_before.used_bytes);
-    }
+    let stats_before = core_memory_stats();
+    println("Memory before execution:");
+    println("  Allocations: ", stats_before.allocations);
+    println("  Used: ", stats_before.used_bytes, " bytes");
+    println();
 
-    let mut iteration = 0;
-    while iteration < execution_count {
-        println("\n[Execution ", iteration + 1, " of ", execution_count, "]");
-        let result = core_module_execute(handle);
-        println("Driver returned -> ", result);
-        iteration = iteration + 1;
-    }
+    println("Executing device driver...");
+    let result = core_module_execute(handle);
+    println("Driver returned: ", result);
+    println();
 
-    if track_memory {
-        let stats_after = core_memory_stats();
-        println("\nMemory after execution -> allocations: ", stats_after.allocations, ", used: ", stats_after.used_bytes);
-    }
+    let stats_after = core_memory_stats();
+    println("Memory after execution:");
+    println("  Allocations: ", stats_after.allocations);
+    println("  Used: ", stats_after.used_bytes, " bytes");
+    println();
 
-    // Quick self-check: confirm the handle stays valid before release.
-    println("\n[Self Check] Module handle remained valid through all executions.");
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Production Patterns
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Production AI/Agent Patterns");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("In production systems:");
+    println("  • Use compiled modules for sensor drivers");
+    println("  • Orchestrate agents with SolvraScript");
+    println("  • Monitor memory to prevent resource exhaustion");
+    println("  • Implement graceful degradation under constraints");
+    println();
+    println("This architecture powers:");
+    println("  • Autonomous robots and drones");
+    println("  • Edge AI systems");
+    println("  • Distributed sensor networks");
+    println("  • Real-time embedded intelligence");
+    println();
+
+    println("[Self Check] Module handle remained valid through execution!");
+    println();
 
     core_module_release(handle);
-    println("Module released. Ready for next integration test.");
+    println("Module released. Integration complete!");
+    println();
 
-    println("Try-It Yourself: orchestrate multiple driver executions and compare stats.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+
+    println("Question: What is the main benefit of hybrid architectures?");
+    println("  a) Easier to write");
+    println("  b) Combines scripting flexibility with compiled performance");
+    println("  c) Uses less memory");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! Hybrid = flexibility + performance!");
+        println("  Script for orchestration, compile for speed!");
+    } else {
+        println("✗ Not quite. The correct answer is 'b'.");
+        println("  Hybrid architectures let you script high-level logic");
+        println("  while using compiled modules for performance-critical code!");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ Hybrid SolvraScript/SolvraCore architectures");
+    println("  ✓ AI micro-agent integration patterns");
+    println("  ✓ Resource tracking in agent systems");
+    println("  ✓ Production patterns for autonomous systems");
+    println();
+    println("Key Takeaway:");
+    println("  Expert-level integration enables hybrid SolvraScript/SolvraCore");
+    println("  architectures perfect for AI agents, embedded systems, and");
+    println("  resource-constrained autonomous applications!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to final lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 One more to go! bytecode_visualizer.svs");
+    } else {
+        println("👋 Thanks for learning!");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
-// End comments: Demonstrates SolvraScript orchestrating compiled AI/driver modules
 // @ZNOTE: Expert-level integration enables hybrid SolvraScript/SolvraCore architectures
 //--------------------------------------------------
 

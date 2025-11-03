@@ -11,53 +11,215 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Inspect a .svc file from SolvraScript and outline CLI tooling steps.
+// Interactive guided tutorial: Master bytecode inspection
 // Run with: ./scripts/build.sh lessons/tier4_expert/bytecode_visualizer.svs
-// Try-It: point TARGET_FILE to your own compiled artifact.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 const TARGET_FILE = "lessons/tier3_advanced/compile_pipeline.svc";
 
-fn run_demo() {
-    println("=== Bytecode preview ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 4 Expert: Bytecode Visualization & Inspection       ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    // Try-It: Choose a bytecode file to inspect
-    let custom_file = inp("Enter path to .svc file (or press Enter for default): ");
-    let show_disasm_guide = inp("Show disassembly guide? (y/n, or press Enter for yes): ");
+    println("📚 What you'll learn:");
+    println("  • How to inspect compiled .svc bytecode files");
+    println("  • How to use disassembly tools for debugging");
+    println("  • Understanding the SolvraCore VM instruction set");
+    println("  • Advanced debugging techniques for bytecode");
+    println();
 
-    let target = TARGET_FILE;
-    if len(custom_file) > 0 {
-        target = custom_file;
-    }
+    println("Let's begin!");
+    println();
 
-    let contents = read_file(target);
-    println("Loaded ", target, " -> ", len(contents), " bytes");
+    // Concept 1: What is Bytecode?
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Understanding Bytecode");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Bytecode is the intermediate representation between:");
+    println("  • Source code (.svs files)");
+    println("  • Machine execution (SolvraCore VM)");
+    println();
+    println("Benefits of bytecode inspection:");
+    println("  • Debug compilation issues");
+    println("  • Optimize performance");
+    println("  • Understand VM internals");
+    println("  • Verify security properties");
+    println();
+    println("Think of it as 'assembly language' for SolvraCore!");
+    println();
 
-    println("First chunk:");
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Loading Bytecode Files
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Inspecting Bytecode Files");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Let's inspect a compiled bytecode file:");
+    println("  Target: ", TARGET_FILE);
+    println();
+
+    println("Loading bytecode...");
+    let contents = read_file(TARGET_FILE);
+    println("Loaded ", len(contents), " bytes of bytecode");
+    println();
+    println("First chunk preview:");
     println(contents);
+    println();
 
-    if show_disasm_guide == "y" || show_disasm_guide == "Y" || len(show_disasm_guide) == 0 {
-        println("\n=== Disassembly Guide ===");
-        println("Next steps:\n 1. cargo run --bin solvra_disasm -- ", target, "\n 2. Compare disassembly with runtime output\n 3. Map each opcode to docs/svc_format.md");
-        println("\nAdvanced options:");
-        println(" - Use hex editor to inspect raw bytecode structure");
-        println(" - Compare multiple .svc files to understand patterns");
-        println(" - Cross-reference with SolvraCore VM implementation");
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Disassembly Workflow
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Disassembly Workflow");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("To disassemble bytecode into readable instructions:");
+    println();
+    println("Step 1: Use the SolvraCore disassembler");
+    println("  cargo run --bin solvra_disasm -- ", TARGET_FILE);
+    println();
+    println("Step 2: Compare with source code");
+    println("  Compare disassembly output with original .svs");
+    println();
+    println("Step 3: Map opcodes to documentation");
+    println("  Reference: docs/svc_format.md");
+    println();
+    println("This reveals exactly how the VM executes your code!");
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Advanced Debugging
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Advanced Bytecode Debugging");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Expert-level debugging techniques:");
+    println();
+    println("1. Hex Inspection:");
+    println("   Use a hex editor to examine raw bytecode structure");
+    println();
+    println("2. Comparative Analysis:");
+    println("   Compare multiple .svc files to understand patterns");
+    println();
+    println("3. VM Tracing:");
+    println("   Cross-reference with SolvraCore VM implementation");
+    println();
+    println("4. Performance Profiling:");
+    println("   Identify hot paths and optimization opportunities");
+    println();
+    println("Understanding bytecode unlocks full SolvraCore debugging!");
+    println();
+
+    println("[Self Check] If the file failed to load, verify the path!");
+    println();
+
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+
+    println("Question: What tool do you use to disassemble .svc files?");
+    println("  a) solvra_compile");
+    println("  b) solvra_disasm");
+    println("  c) solvra_debug");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! solvra_disasm disassembles bytecode.");
+        println("  Run with: cargo run --bin solvra_disasm -- file.svc");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — solvra_disasm");
+        println("  This tool converts compiled bytecode back into");
+        println("  human-readable VM instructions!");
     }
+    println();
 
-    println("[Self Check] If the file failed to load, verify the path and rerun.");
-    println("Try-It Yourself: compile a lesson with ./scripts/build.sh and disassemble it.");
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to inspect compiled .svc bytecode files");
+    println("  ✓ How to use solvra_disasm for debugging");
+    println("  ✓ Understanding VM instruction sets");
+    println("  ✓ Advanced debugging techniques");
+    println();
+    println("Key Takeaway:");
+    println("  Understanding bytecode internals unlocks full SolvraCore");
+    println("  debugging capabilities. This expert-level knowledge enables");
+    println("  optimization, security analysis, and deep system understanding!");
+    println();
+
+    // Final Congratulations
+    println("═════════════════════════════════════════════════════════════");
+    println("🎉 CONGRATULATIONS! 🎉");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("You've completed ALL SolvraScript curriculum lessons!");
+    println();
+    println("You've mastered:");
+    println("  ✓ Tier 1: Foundations (variables, functions, loops, math)");
+    println("  ✓ Tier 2: Intermediate (async, modules, memory)");
+    println("  ✓ Tier 3: Advanced (events, classes, imports)");
+    println("  ✓ Tier 4: Expert (AI agents, bytecode)");
+    println();
+    println("You're now ready to build production SolvraCore applications!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Explore SolvraCore documentation");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Check out:");
+        println("   • docs/ - Full documentation");
+        println("   • examples/ - More sample code");
+        println("   • Solvra_pkg/ - Core libraries");
+    } else {
+        println("👋 Thanks for completing the curriculum!");
+        println("   You're now a SolvraCore expert!");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
-// End comments: Shows bytecode file inspection and disassembly workflow guidance
 // @ZNOTE: Understanding bytecode internals unlocks full SolvraCore debugging capabilities
 //--------------------------------------------------
 

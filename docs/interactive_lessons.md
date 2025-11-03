@@ -1,10 +1,57 @@
-# Interactive Lessons — Input & Progress Guide
+# Interactive Lessons — Guided Tutorial Format
 
 ---
 
 ## Overview
 
-The Solvra_Curriculum now features **interactive lessons** that use `inp()` and `input()` functions to create a dialogue-driven learning experience. This document explains how interactive input works, how lessons log user progress, and best practices for creating engaging educational content.
+The Solvra_Curriculum features **guided, interactive tutorials** that teach SolvraScript through narrated, step-by-step walkthroughs. Each lesson uses `inp()` for user interaction, provides real-time feedback, and offers progression controls.
+
+This document explains the guided tutorial format, how lessons work, and best practices for creating engaging educational content.
+
+---
+
+## 🎓 New: Guided Tutorial Format
+
+All lessons now follow a structured, interactive tutorial format that includes:
+
+1. **Opening Banner** - Visual welcome with lesson title
+2. **Learning Objectives** - Clear list of what you'll learn
+3. **Concept Sections** - Step-by-step explanations with examples
+4. **Try-It-Yourself Challenges** - Interactive quizzes with feedback
+5. **Lesson Summary** - Recap of key takeaways
+6. **Next Steps** - Options to repeat, continue, or exit
+
+**Example Lesson Flow:**
+```
+╔════════════════════════════════════════╗
+║  Welcome to SolvraScript — Lesson 1   ║
+╚════════════════════════════════════════╝
+
+📚 What you'll learn:
+  • Concept A
+  • Concept B
+
+─────────────────────────────────────────
+📖 Concept 1: Introduction
+─────────────────────────────────────────
+Explanation here...
+Press Enter to continue...
+
+✍️  Try-It-Yourself Challenge
+Question: What is...?
+Your answer: _
+✓ Correct! / ✗ Not quite...
+
+📋 Lesson Summary
+Today you learned:
+  ✓ Item 1
+  ✓ Item 2
+
+What would you like to do?
+  [1] View lesson again
+  [2] Continue to next lesson
+  [3] Exit
+```
 
 ---
 
@@ -56,19 +103,107 @@ if len(timeout_input) > 0 {
 
 ---
 
-## 2.0 Interactive Patterns by Tier
+## 2.0 Guided Tutorial Structure
+
+### 2.1 Lesson Components
+
+Every guided tutorial includes these sections:
+
+**1. Welcome Banner**
+```svs
+println("╔════════════════════════════════════════╗");
+println("║  Welcome to SolvraScript — Lesson 1   ║");
+println("╚════════════════════════════════════════╝");
+```
+
+**2. Learning Objectives**
+```svs
+println("📚 What you'll learn:");
+println("  • How to print text with println()");
+println("  • How to create variables with let");
+println("  • How to get user input with inp()");
+```
+
+**3. Concept Sections**
+```svs
+println("─────────────────────────────────────────");
+println("📖 Concept 1: Printing Text");
+println("─────────────────────────────────────────");
+println();
+println("In SolvraScript, we use println() to display text...");
+println();
+let continue1 = inp("Press Enter to continue...");
+```
+
+**4. Try-It-Yourself Challenge**
+```svs
+println("═════════════════════════════════════════");
+println("✍️  Try-It-Yourself Challenge");
+println("═════════════════════════════════════════");
+println();
+println("Question: What function prints text in SolvraScript?");
+println("  a) print()");
+println("  b) println()");
+println("  c) echo()");
+let answer = inp("Your answer (a/b/c): ");
+
+if answer == "b" || answer == "B" {
+    println("✓ Correct! println() prints with a newline.");
+} else {
+    println("✗ Not quite. The correct answer is 'b'.");
+}
+```
+
+**5. Lesson Summary**
+```svs
+println("═════════════════════════════════════════");
+println("📋 Lesson Summary");
+println("═════════════════════════════════════════");
+println();
+println("Today you learned:");
+println("  ✓ How to print text with println()");
+println("  ✓ How to create variables with let");
+println("  ✓ How to get user input with inp()");
+```
+
+**6. Next Steps**
+```svs
+println("What would you like to do?");
+println("  [1] View lesson again");
+println("  [2] Continue to next lesson");
+println("  [3] Exit");
+let choice = inp("Your choice (1/2/3): ");
+
+if choice == "1" {
+    run_tutorial(); // Restart lesson
+} else if choice == "2" {
+    println("Continue to next lesson with ./scripts/learn.sh");
+} else {
+    println("Thanks for learning!");
+}
+```
+
+---
+
+## 3.0 Interactive Patterns by Tier
 
 ### Tier 1 — Foundations
 
-**Focus**: Basic input/output and user interaction
+**Focus**: Basic input/output and user interaction with step-by-step guidance
 
 **Patterns:**
+- Narrated concept introductions
 - Simple text input (names, labels)
-- Numeric input for calculations
-- Parameter customization
+- Interactive quizzes with feedback
+- Progress pacing with "Press Enter to continue..."
 
 **Example: Hello World (01_hello_world.svs)**
 ```svs
+println("📖 Concept 3: Getting User Input");
+println("We can ask users for input with inp():");
+println("  let name = inp(\"What's your name? \");");
+println();
+println("Now it's your turn!");
 let learner_name = inp("What's your name? ");
 println("Hello, " + learner_name + "!");
 ```

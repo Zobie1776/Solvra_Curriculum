@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Simulate class-style organisation with object maps and helper methods.
+// Interactive guided tutorial: Master object-oriented patterns
 // Run with: ./scripts/build.sh lessons/tier3_advanced/classes.svs
-// Try-It: add a new helper that clears the task list.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn make_robot(name) {
@@ -30,61 +29,187 @@ fn robot_add_task(robot, task) {
     let mut tasks = robot.tasks;
     tasks = push(tasks, task);
     robot.tasks = tasks;
-    println("Task added -> ", task);
+    println("Task added: ", task);
     return robot;
 }
 
 fn robot_summary(robot) {
-    println("Robot -> ", robot.name);
-    println("Task count -> ", len(robot.tasks));
+    println("Robot: ", robot.name);
+    println("Task count: ", len(robot.tasks));
     for job in robot.tasks {
-        println(" - ", job);
+        println("  - ", job);
     }
 }
 
-fn run_demo() {
-    println("=== Object-oriented patterns ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 3: Object-Oriented Patterns with Maps               ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    // Try-It: Create a custom robot with your own name and tasks
-    let robot_name = inp("Enter robot name (or press Enter for 'Scout-7'): ");
-    let custom_task = inp("Enter a custom task (or press Enter to skip): ");
+    println("📚 What you'll learn:");
+    println("  • How to simulate classes with maps and functions");
+    println("  • How to implement methods as helper functions");
+    println("  • How to manage object state");
+    println("  • Object-oriented design patterns in SolvraScript");
+    println();
 
-    let name = "Scout-7";
-    if len(robot_name) > 0 {
-        name = robot_name;
-    }
+    println("Let's begin!");
+    println();
 
-    let mut scout = make_robot(name);
+    // Concept 1: Objects as Maps
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Objects as Maps");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("SolvraScript uses maps to create object-like structures:");
+    println("  fn make_robot(name) {");
+    println("      return { \"name\": name, \"tasks\": [] };");
+    println("  }");
+    println();
+    println("This pattern simulates classes without complex OOP syntax!");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Methods as Functions
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Methods as Helper Functions");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Implement methods as functions that take the object:");
+    println("  fn robot_add_task(robot, task) {");
+    println("      robot.tasks = push(robot.tasks, task);");
+    println("      return robot;");
+    println("  }");
+    println();
+    println("This functional approach is clean and explicit!");
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Building Objects
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Creating and Managing Objects");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Let's create a robot and add tasks:");
+    println();
+
+    let mut scout = make_robot("Scout-7");
+    println("Created robot: ", scout.name);
+    println();
+
     scout = robot_add_task(scout, "Scan modules");
     scout = robot_add_task(scout, "Report status");
-
-    if len(custom_task) > 0 {
-        scout = robot_add_task(scout, custom_task);
-    }
+    println();
 
     robot_summary(scout);
+    println();
 
-    // Quick self-check: validate the robot stored the expected tasks.
-    let expected_tasks = 2;
-    if len(custom_task) > 0 {
-        expected_tasks = 3;
-    }
+    let continue3 = inp("Press Enter to continue...");
+    println();
 
-    if len(scout.tasks) == expected_tasks {
-        println("[Self Check] Robot task ledger looks good.");
+    // Concept 4: OOP Benefits
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Why Object-Oriented Patterns Matter");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Benefits of this pattern:");
+    println("  • Encapsulation (group related data)");
+    println("  • Reusability (factory functions)");
+    println("  • Clarity (explicit state management)");
+    println("  • Flexibility (functional composition)");
+    println();
+    println("Perfect for modeling real-world entities!");
+    println();
+
+    // Quick self-check
+    if len(scout.tasks) == 2 {
+        println("[Self Check] Robot task ledger looks good!");
     } else {
-        println("[Self Check] Task ledger mismatch.");
+        println("[Self Check] Task ledger mismatch!");
     }
+    println();
 
-    println("Try-It Yourself: augment robot_add_task with priority labels.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+
+    println("Question: What data structure do we use to simulate classes?");
+    println("  a) Arrays");
+    println("  b) Maps");
+    println("  c) Strings");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! Maps (objects) simulate class structures.");
+        println("  Maps store key-value pairs, like object properties!");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — Maps");
+        println("  Maps provide the key-value structure needed");
+        println("  to represent objects with properties!");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to simulate classes with maps");
+    println("  ✓ How to implement methods as functions");
+    println("  ✓ How to manage object state functionally");
+    println("  ✓ Object-oriented design patterns");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraCore supports flexible data modeling through");
+    println("  maps and functional patterns, enabling clean OOP-style");
+    println("  code without complex class syntax!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Continue to modules_and_imports.svs!");
+    } else {
+        println("👋 Thanks for learning!");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
-// End comments: Shows object-oriented patterns with map-based state and helper functions
 // @ZNOTE: SolvraCore supports flexible data modeling through maps and functional patterns
 //--------------------------------------------------
 

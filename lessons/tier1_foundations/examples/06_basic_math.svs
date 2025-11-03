@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Practice SolvraScript arithmetic helpers and formatting.
+// Interactive guided tutorial: Master arithmetic and math functions
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/06_basic_math.svs
-// Try-It: change the quiz numbers or add a random challenge.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn factorial(n) {
@@ -27,37 +26,214 @@ fn factorial(n) {
 }
 
 fn show_operations(a, b) {
-    println("Inputs -> ", a, ", ", b);
-    println("Add -> ", a + b);
-    println("Subtract via sbt -> ", sbt(a, b));
-    println("Divide via div -> ", div(a, b));
-    println("Power -> ", pow(a, b));
+    println("  Inputs: ", a, ", ", b);
+    println("  Add (+): ", a + b);
+    println("  Subtract (sbt): ", sbt(a, b));
+    println("  Divide (div): ", div(a, b));
+    println("  Power (pow): ", pow(a, b));
 }
 
-fn run_demo() {
-    println("Now you try — enter a number to calculate its factorial:");
-    let n = inp("Number: ");
-    println("Factorial of " + n + " is " + factorial(n));
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Welcome to SolvraScript — Lesson 6: Basic Math           ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    show_operations(9, 3);
+    println("📚 What you'll learn:");
+    println("  • How to use basic arithmetic operators (+, -, *, /)");
+    println("  • How to use built-in math helpers (sbt, div, pow)");
+    println("  • How to generate random numbers");
+    println("  • How to build mathematical functions");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: Basic Arithmetic
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Basic Arithmetic Operators");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("SolvraScript supports standard arithmetic operators:");
+    println("  +   Addition");
+    println("  -   Subtraction");
+    println("  *   Multiplication");
+    println("  /   Division");
+    println();
+    println("Example:");
+    println("  let sum = 5 + 3;      // 8");
+    println("  let diff = 10 - 4;    // 6");
+    println("  let product = 6 * 7;  // 42");
+    println("  let quotient = 20 / 4; // 5");
+    println();
+
+    let a = 10;
+    let b = 3;
+    println("Let's try with ", a, " and ", b, ":");
+    println("  ", a, " + ", b, " = ", a + b);
+    println("  ", a, " - ", b, " = ", a - b);
+    println("  ", a, " * ", b, " = ", a * b);
+    println("  ", a, " / ", b, " = ", a / b);
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Built-in Math Helpers
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Built-in Math Helpers");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("SolvraScript provides helpful math functions:");
+    println("  sbt(a, b)  - Subtract b from a");
+    println("  div(a, b)  - Divide a by b");
+    println("  pow(a, b)  - Raise a to power b");
+    println();
+    println("These helpers are especially useful in function pipelines!");
+    println();
+
+    println("Demonstration with ", a, " and ", b, ":");
+    show_operations(a, b);
+    println();
+
+    // Quick self-check
+    let manual = a - b;
+    let builtin = sbt(a, b);
+    if manual == builtin {
+        println("[Self Check] sbt(", a, ", ", b, ") matches manual subtraction!");
+    } else {
+        println("[Self Check] Unexpected mismatch - investigate!");
+    }
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Power and Advanced Operations
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Power and Advanced Operations");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("The pow() function computes exponents:");
+    println("  pow(2, 3) = 2³ = 8");
+    println("  pow(5, 2) = 5² = 25");
+    println();
+
+    println("Examples:");
+    println("  pow(2, 3) = ", pow(2, 3));
+    println("  pow(5, 2) = ", pow(5, 2));
+    println("  pow(10, 0) = ", pow(10, 0), "  (anything to power 0 is 1)");
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Random Numbers and Factorial
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Random Numbers & Recursive Functions");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Generate random numbers with random(min, max):");
+    println("  let dice = random(1, 6);");
+    println();
 
     let random_pick = random(1, 10);
-    println("Random helper -> ", random_pick);
+    println("Random number between 1-10: ", random_pick);
+    println();
 
-    // Quick self-check: verify sbt mirrors manual subtraction.
-    let manual = 9 - 3;
-    let builtin = sbt(9, 3);
-    if manual == builtin {
-        println("[Self Check] sbt matches manual subtraction.");
+    println("Here's a factorial function (recursive math!):");
+    println("  fn factorial(n) {");
+    println("      if n <= 1 { return 1; }");
+    println("      return n * factorial(n - 1);");
+    println("  }");
+    println();
+
+    println("Now you try! Calculate a factorial:");
+    let n = inp("Enter a number (1-10): ");
+    let result = factorial(n);
+    println();
+    println("Factorial of ", n, " is ", result);
+    println();
+
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: What does pow(3, 2) return?");
+    println("  a) 5");
+    println("  b) 6");
+    println("  c) 9");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "c" || answer == "C" {
+        println("✓ Correct! pow(3, 2) = 3² = 3 × 3 = 9");
+        println("  The pow() function computes exponents.");
     } else {
-        println("[Self Check] sbt mismatch -> investigate inputs.");
+        println("✗ Not quite. The correct answer is 'c' — 9");
+        println("  pow(3, 2) means '3 to the power of 2'");
+        println("  This equals 3 × 3 = 9");
+        println("  Remember: pow(base, exponent)");
     }
+    println();
 
-    println("Try-It Yourself: call show_operations() with new numbers.");
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to use arithmetic operators (+, -, *, /)");
+    println("  ✓ How to use built-in helpers (sbt, div, pow)");
+    println("  ✓ How to generate random numbers with random()");
+    println("  ✓ How to build recursive mathematical functions");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraCore provides rich math primitives for computational tasks.");
+    println("  Combine operators, helpers, and functions to solve complex");
+    println("  mathematical problems efficiently!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to Tier 2 lessons");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Excellent! You've completed Tier 1 Foundations!");
+        println("   Ready for Tier 2? Run:");
+        println("   ./scripts/learn.sh");
+        println("   (Select Tier 2: Intermediate)");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

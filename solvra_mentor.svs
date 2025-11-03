@@ -1,0 +1,287 @@
+//==================================================
+// File: solvra_mentor.svs
+//==================================================
+// Author: ZobieLabs
+// License: Duality Public License (DPL v1.0)
+// Goal: Virtual tutor script that can run between lessons and explain concepts dynamically
+// Objective: Provide interactive help and concept clarification for learners
+//==================================================
+
+//==================================================
+// Section 1.0 - Mentor Objective
+//==================================================
+
+// Optional virtual tutor that helps learners understand SolvraScript concepts
+// Run with: ./scripts/build.sh solvra_mentor.svs
+
+//==================================================
+// Section 2.0 - Mentor Implementation
+//==================================================
+
+fn show_banner() {
+    println();
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║           🎓 SolvraScript Mentor Assistant 🎓              ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
+}
+
+fn show_menu() {
+    println("What would you like help with?");
+    println();
+    println("  [1] Variables and Types");
+    println("  [2] Functions");
+    println("  [3] Conditionals (if/else)");
+    println("  [4] Loops (for/while)");
+    println("  [5] Async Programming");
+    println("  [6] Memory Management");
+    println("  [7] Quick Tips");
+    println("  [q] Quit");
+    println();
+}
+
+fn explain_variables() {
+    println("═════════════════════════════════════════════════════════════");
+    println("📖 Variables and Types in SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("In SolvraScript, we use 'let' to create variables:");
+    println();
+    println("  let name = \"Alice\";      // Immutable string");
+    println("  let age = 25;             // Immutable integer");
+    println("  let mut score = 0;        // Mutable integer");
+    println();
+    println("Key Points:");
+    println("  • 'let' creates an immutable variable (can't be changed)");
+    println("  • 'let mut' creates a mutable variable (can be changed)");
+    println("  • 'const' creates compile-time constants (UPPERCASE_NAME)");
+    println();
+    println("Type Annotations:");
+    println("  let count: int = 10;      // Explicit int type");
+    println("  let name: string = \"Bob\"; // Explicit string type");
+    println();
+    println("✓ Variables store data for later use in your program!");
+    println();
+}
+
+fn explain_functions() {
+    println("═════════════════════════════════════════════════════════════");
+    println("📖 Functions in SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Functions are reusable blocks of code:");
+    println();
+    println("  fn greet(name) {");
+    println("      println(\"Hello, \", name, \"!\");");
+    println("  }");
+    println();
+    println("Calling the function:");
+    println("  greet(\"Alice\");    // Prints: Hello, Alice!");
+    println();
+    println("Functions with Return Values:");
+    println("  fn add(a, b) {");
+    println("      return a + b;");
+    println("  }");
+    println("  let sum = add(5, 3);  // sum = 8");
+    println();
+    println("✓ Functions help organize code and avoid repetition!");
+    println();
+}
+
+fn explain_conditionals() {
+    println("═════════════════════════════════════════════════════════════");
+    println("📖 Conditionals (if/else) in SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Conditionals let you make decisions in code:");
+    println();
+    println("  let age = 18;");
+    println("  if age >= 18 {");
+    println("      println(\"You are an adult\");");
+    println("  } else {");
+    println("      println(\"You are a minor\");");
+    println("  }");
+    println();
+    println("Multiple Conditions:");
+    println("  if score >= 90 {");
+    println("      println(\"Grade: A\");");
+    println("  } else if score >= 80 {");
+    println("      println(\"Grade: B\");");
+    println("  } else {");
+    println("      println(\"Grade: C\");");
+    println("  }");
+    println();
+    println("Comparison Operators:");
+    println("  ==  (equal to)");
+    println("  !=  (not equal to)");
+    println("  <   (less than)");
+    println("  <=  (less than or equal)");
+    println("  >   (greater than)");
+    println("  >=  (greater than or equal)");
+    println();
+    println("✓ Conditionals control the flow of your program!");
+    println();
+}
+
+fn explain_loops() {
+    println("═════════════════════════════════════════════════════════════");
+    println("📖 Loops (for/while) in SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Loops repeat code multiple times:");
+    println();
+    println("For Loop (iterate over items):");
+    println("  let numbers = [1, 2, 3, 4, 5];");
+    println("  for num in numbers {");
+    println("      println(num);");
+    println("  }");
+    println();
+    println("While Loop (repeat while condition is true):");
+    println("  let mut count = 0;");
+    println("  while count < 5 {");
+    println("      println(count);");
+    println("      count = count + 1;");
+    println("  }");
+    println();
+    println("✓ Loops help automate repetitive tasks!");
+    println();
+}
+
+fn explain_async() {
+    println("═════════════════════════════════════════════════════════════");
+    println("📖 Async Programming in SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Async/await lets you run tasks concurrently:");
+    println();
+    println("  async fn fetch_data() {");
+    println("      sleep(1000);  // Wait 1 second");
+    println("      return \"Data loaded!\";");
+    println("  }");
+    println();
+    println("  let task = async fetch_data();");
+    println("  let result = await task;");
+    println("  println(result);");
+    println();
+    println("Key Concepts:");
+    println("  • 'async' marks a function as asynchronous");
+    println("  • 'await' pauses until the async task completes");
+    println("  • Multiple async tasks can run at the same time");
+    println();
+    println("Why Async?");
+    println("  • Improves performance for I/O operations");
+    println("  • Lets your program do multiple things at once");
+    println("  • Essential for building responsive applications");
+    println();
+    println("✓ Async makes your code faster and more efficient!");
+    println();
+}
+
+fn explain_memory() {
+    println("═════════════════════════════════════════════════════════════");
+    println("📖 Memory Management in SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("SolvraScript manages memory automatically:");
+    println();
+    println("  • Stack: Fast, fixed-size data (numbers, booleans)");
+    println("  • Heap: Dynamic data (strings, arrays, objects)");
+    println();
+    println("Memory Tracking:");
+    println("  let stats = core_memory_stats();");
+    println("  println(\"Used bytes: \", stats.used_bytes);");
+    println();
+    println("Best Practices:");
+    println("  • Reuse variables when possible");
+    println("  • Avoid creating unnecessary copies");
+    println("  • Let SolvraCore handle cleanup automatically");
+    println();
+    println("✓ Understanding memory helps you write efficient code!");
+    println();
+}
+
+fn show_quick_tips() {
+    println("═════════════════════════════════════════════════════════════");
+    println("💡 Quick Tips for Learning SolvraScript");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("1. Experiment Often");
+    println("   Try changing values and see what happens!");
+    println();
+    println("2. Read Error Messages");
+    println("   Errors tell you exactly what went wrong.");
+    println();
+    println("3. Use println() for Debugging");
+    println("   Print variables to see their values:");
+    println("   println(\"Debug: \", my_variable);");
+    println();
+    println("4. Start Small");
+    println("   Master basics before moving to advanced topics.");
+    println();
+    println("5. Practice Daily");
+    println("   Consistency beats intensity!");
+    println();
+    println("6. Ask for Help");
+    println("   Use this mentor or review lesson summaries.");
+    println();
+    println("✓ Keep learning and you'll master SolvraScript!");
+    println();
+}
+
+fn run_mentor() {
+    show_banner();
+
+    println("👋 Hello! I'm your SolvraScript mentor.");
+    println("I can help explain concepts between lessons or clarify topics.");
+    println();
+
+    let mut running = true;
+
+    while running {
+        show_menu();
+        let choice = inp("Your choice: ");
+        println();
+
+        if choice == "1" {
+            explain_variables();
+        } else if choice == "2" {
+            explain_functions();
+        } else if choice == "3" {
+            explain_conditionals();
+        } else if choice == "4" {
+            explain_loops();
+        } else if choice == "5" {
+            explain_async();
+        } else if choice == "6" {
+            explain_memory();
+        } else if choice == "7" {
+            show_quick_tips();
+        } else if choice == "q" || choice == "Q" {
+            println("👋 Happy coding! Return anytime with:");
+            println("   ./scripts/build.sh solvra_mentor.svs");
+            println();
+            running = false;
+        } else {
+            println("❌ Invalid choice. Please select 1-7 or q.");
+            println();
+        }
+
+        if running {
+            let continue_prompt = inp("Press Enter to return to menu...");
+            println();
+        }
+    }
+}
+
+fn main() {
+    run_mentor();
+}
+
+//--------------------------------------------------
+// The mentor provides on-demand concept explanations between lessons.
+// @ZNOTE: Optional helper tool for learners who need concept refreshers
+//--------------------------------------------------
+
+//==================================================
+// End of file
+//==================================================

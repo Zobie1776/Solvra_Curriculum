@@ -11,38 +11,178 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Print text, combine strings, feel the runtime loop.
+// Interactive guided tutorial: Learn SolvraScript basics through hands-on exploration
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/01_hello_world.svs
-// Try-It: change learner_name and re-run for instant feedback.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn show_greeting(name) {
     println("Hello, ", name, "!");
 }
 
-fn run_demo() {
-    println("Welcome to SolvraScript!");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Welcome to SolvraScript — Lesson 1: Hello World          ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
+
+    println("📚 What you'll learn:");
+    println("  • How to print text with println()");
+    println("  • How to define and call functions");
+    println("  • How to work with variables and strings");
+    println("  • How to get user input with inp()");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: Basic Printing
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Printing Text");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("In SolvraScript, we use println() to display text:");
+    println("  println(\"Hello, World!\");");
+    println();
+    println("Let me demonstrate:");
+    println("Hello, World!");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Variables
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Variables");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Variables store data. In SolvraScript, we declare them with 'let':");
+    println("  let message = \"Welcome to Solvra!\";");
+    println();
+
+    let message = "Welcome to Solvra!";
+    println("Here's our variable in action:");
+    println(message);
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: User Input
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Getting User Input");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("We can ask users for input with inp():");
+    println("  let name = inp(\"What's your name? \");");
+    println();
+
+    println("Now it's your turn!");
     let learner_name = inp("What's your name? ");
+    println();
+    println("Great! Let's use your name...");
     println("Hello, " + learner_name + "!");
     println("Now you're officially part of the Solvra ecosystem.");
+    println();
 
-    // Quick self-check: confirms show_greeting() works.
-    println("\n[Self Check] Greeting for Tester ->");
-    show_greeting("Tester");
+    let continue3 = inp("Press Enter to continue...");
+    println();
 
-    println("\nTry-It Yourself: change learner_name prompt and rerun.");
+    // Concept 4: Functions
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Creating Functions");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Functions let us reuse code. Here's a greeting function:");
+    println("  fn show_greeting(name) {");
+    println("      println(\"Hello, \", name, \"!\");");
+    println("  }");
+    println();
+    println("Let me call it for you:");
+    show_greeting(learner_name);
+    println();
+
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: What function do we use to print text in SolvraScript?");
+    println("  a) print()");
+    println("  b) println()");
+    println("  c) echo()");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! println() is used to print text with a newline.");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — println()");
+        println("  println() prints text and adds a newline at the end.");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to print text with println()");
+    println("  ✓ How to create variables with let");
+    println("  ✓ How to get user input with inp()");
+    println("  ✓ How to define and call functions");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraScript makes it easy to interact with users and");
+    println("  organize code with functions. You're ready for the next lesson!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Run the next lesson with:");
+        println("   ./scripts/learn.sh");
+        println("   (Select lesson 2: Variables & Types)");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
-// The lesson demonstrates real-time user input and string concatenation.
-// @ZNOTE: Foundation for later interactive exercises and async examples.
+// The lesson demonstrates guided, interactive learning with narration and feedback.
+// @ZNOTE: Foundation for interactive tutorial format used across all tiers.
 //--------------------------------------------------
 
 //==================================================

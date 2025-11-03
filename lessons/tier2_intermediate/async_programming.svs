@@ -11,25 +11,16 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Understand async/await, cooperative scheduling, and timeouts.
+// Interactive guided tutorial: Master asynchronous programming
 // Run with: ./scripts/build.sh lessons/tier2_intermediate/async_programming.svs
-// Try-It: change TASK_DELAY_MS or spawn an extra async job.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 import <string> as strings;
 
-// Try-It: Enter custom delay values when prompted, or press Enter for defaults
-let delay_input = inp("Enter task delay in milliseconds (or press Enter for 150ms): ");
-let TASK_DELAY_MS = 150;
-if len(delay_input) > 0 {
-    TASK_DELAY_MS = parse_int(delay_input);
-    if TASK_DELAY_MS < 0 {
-        TASK_DELAY_MS = 150;
-    }
-}
+const TASK_DELAY_MS = 150;
 
 fn async_fetch(label, delay_ms) {
     println("[", label, "] scheduling work");
@@ -48,33 +39,198 @@ async fn fetch_report() {
     return [first_value, second_value];
 }
 
-fn run_demo() {
-    println("=== Async scheduler warm-up ===");
-    let start = time();
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 2: Async Programming                                ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
+    println("📚 What you'll learn:");
+    println("  • How to use async/await for concurrent tasks");
+    println("  • How cooperative scheduling works in SolvraCore");
+    println("  • How to spawn and await async functions");
+    println("  • Why async matters for efficient resource use");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: What is Async Programming?
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Understanding Async Programming");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Async programming lets multiple tasks run concurrently");
+    println("without blocking each other. This is crucial for:");
+    println("  • Network operations (API calls, downloads)");
+    println("  • I/O operations (file reading, database queries)");
+    println("  • Long-running computations");
+    println();
+    println("In SolvraCore, async tasks cooperate using a scheduler.");
+    println("While one task waits (sleep, I/O), others can run!");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: async and await Keywords
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: The async and await Keywords");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Syntax:");
+    println("  async fn my_function() {");
+    println("      let task = async some_work();");
+    println("      let result = await task;");
+    println("      return result;");
+    println("  }");
+    println();
+    println("Key points:");
+    println("  • 'async fn' declares an asynchronous function");
+    println("  • 'async expression' spawns a concurrent task");
+    println("  • 'await task' pauses until the task completes");
+    println();
+    println("Let's see it in action with timing!");
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Running Async Tasks
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Running Concurrent Tasks");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Watch as we spawn two async tasks:");
+    println("  Task alpha: ", TASK_DELAY_MS, "ms delay");
+    println("  Task beta:  ", TASK_DELAY_MS + 50, "ms delay");
+    println();
+    println("Both tasks will run concurrently!");
+    println();
+
+    let start = time();
     let job = async fetch_report();
     let values = await job;
-
-    println("Collected values -> ", values[0], ", ", values[1]);
-
     let mut elapsed = time() - start;
     if elapsed < 0 {
         elapsed = 0;
     }
-    println("Elapsed seconds -> ", elapsed);
 
-    // Quick self-check: both async_fetch calls must have run.
+    println();
+    println("Collected values: ", values[0], ", ", values[1]);
+    println("Total elapsed time: ", elapsed, " seconds");
+    println();
+    println("Notice: Both tasks ran at the same time!");
+    println("Sequential execution would take longer.");
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Why Async Matters for SolvraCore
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Why Async Matters for SolvraCore");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("SolvraCore's async scheduler enables:");
+    println("  • Efficient resource usage (CPU, memory, I/O)");
+    println("  • Responsive applications (no blocking)");
+    println("  • Scalable systems (handle many tasks)");
+    println("  • AI micro-agents (concurrent decision-making)");
+    println();
+    println("This is essential for:");
+    println("  • Real-time embedded systems");
+    println("  • Network services and APIs");
+    println("  • Multi-sensor data processing");
+    println("  • Autonomous agent coordination");
+    println();
+
+    // Quick self-check
     if len(values) == 2 {
-        println("[Self Check] Both async tasks completed.");
+        println("[Self Check] Both async tasks completed successfully!");
     } else {
-        println("[Self Check] Missing async result.");
+        println("[Self Check] Missing async result - investigate!");
     }
+    println();
 
-    println("Try-It Yourself: raise TASK_DELAY_MS and observe scheduler output.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: What does 'await' do in async programming?");
+    println("  a) Immediately returns a value");
+    println("  b) Pauses until a task completes");
+    println("  c) Cancels a running task");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! 'await' pauses execution until the task finishes.");
+        println("  This lets other tasks run while waiting.");
+        println("  Example: let result = await my_task;");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — pauses until complete");
+        println("  'await' suspends the current function until the async");
+        println("  task completes, allowing other tasks to run in the meantime.");
+        println("  This is cooperative multitasking!");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How async/await enables concurrent task execution");
+    println("  ✓ How to spawn tasks with 'async' and wait with 'await'");
+    println("  ✓ Why cooperative scheduling is efficient");
+    println("  ✓ How async powers SolvraCore's scalability");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraCore's async scheduler enables cooperative multitasking");
+    println("  for efficient resource use. This is crucial for embedded systems,");
+    println("  AI agents, and real-time applications.");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Continue to the next Tier 2 lesson:");
+        println("   ./scripts/learn.sh");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

@@ -11,48 +11,207 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Execute a compiled .svc module from SolvraScript and inspect results.
+// Interactive guided tutorial: Execute compiled bytecode modules
 // Run with: ./scripts/build.sh lessons/tier2_intermediate/compile_and_run.svs
-// Try-It: swap the imported module for your own compiled artifact.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 import "Solvra_pkg/solvra_core/samples/add_numbers.svc" as add_module;
 
-fn run_demo() {
-    println("=== Compiled module execution ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 2: Compile and Run Bytecode Modules                 ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    // Try-It: Choose whether to view detailed module info
-    let show_details = inp("Show detailed module info? (y/n, or press Enter for no): ");
+    println("📚 What you'll learn:");
+    println("  • How to import compiled .svc bytecode modules");
+    println("  • How to execute modules with core_module_execute()");
+    println("  • How to manage module handles and memory");
+    println("  • Why bytecode modules matter for SolvraCore");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: What are Compiled Modules?
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Understanding Compiled Modules");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("SolvraCore compiles SolvraScript (.svs) into bytecode (.svc).");
+    println("Benefits of compiled modules:");
+    println("  • Faster execution (pre-compiled)");
+    println("  • Smaller footprint (optimized bytecode)");
+    println("  • Protection of source code (distributed as binary)");
+    println("  • Cross-platform compatibility");
+    println();
+    println("Think of .svc files as the 'machine code' for SolvraCore VM!");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Importing Modules
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Importing Compiled Modules");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Syntax for importing .svc modules:");
+    println("  import \"path/to/module.svc\" as module_name;");
+    println();
+    println("This lesson imports add_numbers.svc:");
+    println("  import \"Solvra_pkg/.../add_numbers.svc\" as add_module;");
+    println();
+    println("The module is loaded into memory and ready to execute!");
+    println();
 
     let handle = add_module.module.handle;
+    println("Module handle obtained: ", handle);
+    println();
 
-    if show_details == "y" || show_details == "Y" {
-        println("Module handle: ", handle);
-        let stats = core_memory_stats();
-        println("Memory before execution -> ", stats.used_bytes, " bytes used");
-    }
+    let continue2 = inp("Press Enter to continue...");
+    println();
 
+    // Concept 3: Executing Modules
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Executing Bytecode Modules");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Execute modules with core_module_execute(handle):");
+    println();
+    println("Before execution, let's check memory:");
+    let stats_before = core_memory_stats();
+    println("  Allocations: ", stats_before.allocations);
+    println("  Used bytes:  ", stats_before.used_bytes);
+    println();
+
+    println("Executing add_numbers.svc...");
     let result = core_module_execute(handle);
-    println("add_numbers.svc returned -> ", result);
+    println();
+    println("Module returned: ", result);
+    println();
 
-    // Quick self-check: compiled module should return 5 (2 + 3).
+    let stats_after = core_memory_stats();
+    println("After execution:");
+    println("  Allocations: ", stats_after.allocations);
+    println("  Used bytes:  ", stats_after.used_bytes);
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Module Lifecycle
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Module Lifecycle Management");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Module lifecycle:");
+    println("  1. Import: Load module into memory");
+    println("  2. Execute: Run module bytecode");
+    println("  3. Release: Free module resources");
+    println();
+    println("Syntax:");
+    println("  let handle = module.module.handle;");
+    println("  let result = core_module_execute(handle);");
+    println("  core_module_release(handle);");
+    println();
+    println("Proper lifecycle management prevents memory leaks!");
+    println();
+
+    // Quick self-check
     if result == 5 {
-        println("[Self Check] Bytecode execution is wired up.");
+        println("[Self Check] add_numbers.svc returned expected result (2 + 3 = 5)!");
     } else {
-        println("[Self Check] Unexpected result from compiled module.");
+        println("[Self Check] Unexpected result from compiled module: ", result);
     }
+    println();
 
+    println("Releasing module handle...");
     core_module_release(handle);
-    println("Module handle released.");
+    println("Module resources freed!");
+    println();
 
-    println("Try-It Yourself: replace add_numbers.svc with loop_counter.svc and rerun.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: What is the file extension for compiled SolvraScript modules?");
+    println("  a) .svs");
+    println("  b) .svc");
+    println("  c) .bin");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! .svc files are compiled bytecode modules.");
+        println("  .svs = SolvraScript source code");
+        println("  .svc = SolvraCore compiled bytecode");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — .svc");
+        println("  SolvraScript source files use .svs extension");
+        println("  Compiled bytecode modules use .svc extension");
+        println("  The 'c' stands for 'compiled'!");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to import compiled .svc bytecode modules");
+    println("  ✓ How to execute modules with core_module_execute()");
+    println("  ✓ How to manage module lifecycle with release()");
+    println("  ✓ Why bytecode modules enable efficient execution");
+    println();
+    println("Key Takeaway:");
+    println("  The module system bridges SolvraScript orchestration with");
+    println("  compiled SolvraCore artifacts. This hybrid approach combines");
+    println("  scripting flexibility with compiled performance!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Continue to memory_basics.svs:");
+        println("   ./scripts/learn.sh");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

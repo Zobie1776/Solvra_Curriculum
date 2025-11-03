@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Coordinate multiple async tasks and surface progress events.
+// Interactive guided tutorial: Master advanced async coordination
 // Run with: ./scripts/build.sh lessons/tier3_advanced/async_scheduler.svs
-// Try-It: add a third task or adjust the timeout value.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 import <string> as strings;
@@ -34,38 +33,77 @@ async fn schedule_job(name, delay_ms) {
 }
 
 fn handle_job_event(payload) {
-    println("Observer noted completion -> ", payload);
+    println("Observer noted completion: ", payload);
 }
 
-fn run_demo() {
-    println("=== Unified async runner ===");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Tier 3: Advanced Async Scheduler                         ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    // Try-It: Configure task delays interactively
-    let delay_alpha_input = inp("Enter delay for alpha task in ms (or press Enter for 150): ");
-    let delay_beta_input = inp("Enter delay for beta task in ms (or press Enter for 200): ");
-    let spawn_gamma = inp("Spawn a third task 'gamma'? (y/n, or press Enter for no): ");
+    println("📚 What you'll learn:");
+    println("  • How to coordinate multiple async tasks");
+    println("  • How to use event-driven programming with SolvraCore");
+    println("  • How to implement observers for async completion");
+    println("  • Advanced patterns for reactive systems");
+    println();
 
-    let delay_alpha = 150;
-    let delay_beta = 200;
+    println("Let's begin!");
+    println();
 
-    if len(delay_alpha_input) > 0 {
-        delay_alpha = parse_int(delay_alpha_input);
-        if delay_alpha < 0 {
-            delay_alpha = 150;
-        }
-    }
+    // Concept 1: Event-Driven Architecture
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Event-Driven Architecture");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Event-driven systems react to events rather than polling:");
+    println("  • trigger_event(name, payload) - Emit an event");
+    println("  • on_event(name, handler) - Subscribe to events");
+    println();
+    println("Benefits:");
+    println("  • Decoupled components (loose coupling)");
+    println("  • Reactive behavior (respond to changes)");
+    println("  • Scalable coordination (many listeners)");
+    println();
+    println("Perfect for AI micro-agents and async workflows!");
+    println();
 
-    if len(delay_beta_input) > 0 {
-        delay_beta = parse_int(delay_beta_input);
-        if delay_beta < 0 {
-            delay_beta = 200;
-        }
-    }
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Event Subscription
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Subscribing to Events");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Register event handlers before spawning tasks:");
+    println("  on_event(\"job_complete\", handle_job_event);");
+    println();
+    println("This lesson will track async job completions!");
+    println();
 
     on_event("job_complete", handle_job_event);
+    println("Event handler registered for 'job_complete'");
+    println();
 
-    let alpha = async schedule_job("alpha", delay_alpha);
-    let beta = async schedule_job("beta", delay_beta);
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Running Coordinated Tasks
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Coordinating Async Tasks");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Spawning multiple tasks with different delays:");
+    println("  alpha: 150ms");
+    println("  beta:  200ms");
+    println();
+    println("Watch for event notifications!");
+    println();
+
+    let alpha = async schedule_job("alpha", 150);
+    let beta = async schedule_job("beta", 200);
 
     let mut finished = [];
 
@@ -75,34 +113,112 @@ fn run_demo() {
     let result_beta = await beta;
     finished = push(finished, result_beta);
 
-    if spawn_gamma == "y" || spawn_gamma == "Y" {
-        let gamma = async schedule_job("gamma", 100);
-        let result_gamma = await gamma;
-        finished = push(finished, result_gamma);
-    }
+    println();
+    println("All tasks completed!");
+    println("Finished jobs: ", len(finished));
+    println();
 
-    println("Finished jobs -> ", len(finished));
+    let continue3 = inp("Press Enter to continue...");
+    println();
 
-    let expected_count = 2;
-    if spawn_gamma == "y" || spawn_gamma == "Y" {
-        expected_count = 3;
-    }
+    // Concept 4: Advanced Patterns
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Advanced Async Patterns for SolvraCore");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Use event-driven async for:");
+    println("  • Multi-agent coordination (autonomous agents)");
+    println("  • Sensor data pipelines (IoT devices)");
+    println("  • Service orchestration (microservices)");
+    println("  • Real-time monitoring (dashboards)");
+    println();
+    println("SolvraCore's event system enables reactive programming");
+    println("patterns essential for modern distributed systems!");
+    println();
 
-    if len(finished) == expected_count {
-        println("[Self Check] Scheduler drained all tasks.");
+    // Quick self-check
+    if len(finished) == 2 {
+        println("[Self Check] Scheduler drained all tasks successfully!");
     } else {
-        println("[Self Check] Scheduler still has pending tasks.");
+        println("[Self Check] Some tasks are still pending!");
     }
+    println();
 
-    println("Try-It Yourself: register a second event handler that counts completions.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+
+    println("Question: What does trigger_event() do?");
+    println("  a) Starts a new async task");
+    println("  b) Emits an event to registered handlers");
+    println("  c) Cancels a running task");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! trigger_event() emits events to handlers.");
+        println("  Handlers are registered with on_event().");
+    } else {
+        println("✗ Not quite. The correct answer is 'b'.");
+        println("  trigger_event() broadcasts an event to all");
+        println("  registered listeners, enabling reactive behavior!");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ Event-driven architecture with trigger/on_event");
+    println("  ✓ Coordinating multiple async tasks");
+    println("  ✓ Implementing observers for completions");
+    println("  ✓ Advanced patterns for reactive systems");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraCore's event system enables reactive programming");
+    println("  essential for AI agents, IoT, and distributed systems!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Continue to the next Tier 3 lesson!");
+    } else {
+        println("👋 Thanks for learning!");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
-// End comments: Advanced async coordination with event-driven task tracking
 // @ZNOTE: SolvraCore event system enables reactive programming patterns
 //--------------------------------------------------
 

@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Practice defining functions with inputs, outputs, and reuse.
+// Interactive guided tutorial: Master function definition and reuse
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/03_functions.svs
-// Try-It: add your own helper that computes a custom metric.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn lesson_score(completed, bonus) {
@@ -33,27 +32,199 @@ fn feedback(score) {
 }
 
 fn show_value(label, value) {
-    println(label);
-    println(value);
+    println(label, " ", value);
 }
 
-fn run_demo() {
-    let completed = inp("Lessons completed: ");
-    let bonus = inp("Bonus points: ");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Welcome to SolvraScript — Lesson 3: Functions            ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
+
+    println("📚 What you'll learn:");
+    println("  • How to define functions with fn");
+    println("  • How to pass parameters to functions");
+    println("  • How to return values from functions");
+    println("  • How to create reusable helper functions");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: Defining Functions
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Defining Functions");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Functions are reusable blocks of code that perform specific tasks.");
+    println();
+    println("Syntax:");
+    println("  fn function_name(parameter1, parameter2) {");
+    println("      // code here");
+    println("      return result;");
+    println("  }");
+    println();
+    println("Let me show you a simple function:");
+    println("  fn show_value(label, value) {");
+    println("      println(label, \" \", value);");
+    println("  }");
+    println();
+
+    show_value("Example output:", "Hello from a function!");
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Function Parameters
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Function Parameters");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Functions can accept inputs called parameters.");
+    println("Parameters let you pass data into functions.");
+    println();
+    println("Example function:");
+    println("  fn lesson_score(completed, bonus) {");
+    println("      return completed * 2 + bonus;");
+    println("  }");
+    println();
+
+    println("Let's try it with your data!");
+    let completed = inp("How many lessons have you completed? ");
+    let bonus = inp("Enter bonus points: ");
+    println();
 
     let score = lesson_score(completed, bonus);
-    show_value("Computed score ->", score);
-    show_value("Feedback ->", feedback(score));
+    show_value("Your computed score:", score);
+    println();
 
-    // Quick self-check: lesson_score(5, 0) should return 10.
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Return Values
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Return Values");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Functions can send data back using 'return'.");
+    println("The returned value can be stored in a variable or used directly.");
+    println();
+    println("Example:");
+    println("  fn feedback(score) {");
+    println("      if score >= 12 {");
+    println("          return \"Pro level\";");
+    println("      }");
+    println("      return \"Keep exploring\";");
+    println("  }");
+    println();
+
+    let message = feedback(score);
+    show_value("Your feedback:", message);
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Reusable Helpers
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Creating Reusable Helpers");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Helper functions make your code DRY (Don't Repeat Yourself).");
+    println("Instead of writing the same code multiple times,");
+    println("write it once in a function and call it whenever needed.");
+    println();
+    println("We've been using the 'show_value()' helper throughout this lesson!");
+    println();
+    println("Benefits of helper functions:");
+    println("  • Reduces code duplication");
+    println("  • Makes code easier to maintain");
+    println("  • Improves readability");
+    println();
+
+    // Quick self-check
     let check = lesson_score(5, 0);
-    show_value("[Self Check] lesson_score(5, 0) ->", check);
+    show_value("[Self Check] lesson_score(5, 0) should return 10:", check);
+    println();
 
-    println("Try-It Yourself: change the bonus formula or add a new feedback tier.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: What keyword is used to send a value back from a function?");
+    println("  a) send");
+    println("  b) return");
+    println("  c) output");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! The 'return' keyword sends a value back from a function.");
+        println("  Example: return score * 2;");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — return");
+        println("  The 'return' keyword exits a function and sends back a value.");
+        println("  Example: fn add(a, b) { return a + b; }");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to define functions with fn");
+    println("  ✓ How to pass parameters to functions");
+    println("  ✓ How to return values with return");
+    println("  ✓ How to create reusable helper functions");
+    println();
+    println("Key Takeaway:");
+    println("  Functions are the building blocks of modular SolvraScript programs.");
+    println("  They help you organize code, avoid repetition, and create");
+    println("  maintainable applications.");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Run the next lesson with:");
+        println("   ./scripts/learn.sh");
+        println("   (Select lesson 4: Conditionals)");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Master let, let mut, and const with SolvraScript types.
+// Interactive guided tutorial: Master variables and type annotations
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/02_variables.svs
-// Try-It: adjust starting_count and observe the self-check.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn add_points(score: int, points: int) {
@@ -24,32 +23,195 @@ fn add_points(score: int, points: int) {
 }
 
 fn show_value(label, value) {
-    println(label);
-    println(value);
+    println(label, " ", value);
 }
 
-fn run_demo() {
-    const BANNER = "Variable tour";
-    println("== ", BANNER, " ==");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Welcome to SolvraScript — Lesson 2: Variables & Types    ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    let starting_input = inp("Enter starting count: ");
-    let mut score: int = starting_input;
+    println("📚 What you'll learn:");
+    println("  • How to declare immutable variables with let");
+    println("  • How to create mutable variables with let mut");
+    println("  • How to define constants with const");
+    println("  • How to use type annotations for safety");
+    println();
 
-    println("Starting count ->", score);
+    println("Let's begin!");
+    println();
 
-    score = add_points(score, 2);
-    show_value("First update ->", score);
+    // Concept 1: Immutable Variables
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Immutable Variables with let");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("In SolvraScript, 'let' creates an immutable variable:");
+    println("  let name = \"Riley\";");
+    println();
+    println("Once assigned, an immutable variable cannot be changed.");
+    println("This helps prevent bugs and makes code more predictable.");
+    println();
+
+    let player_name = "Riley";
+    println("Example:");
+    println("  let player_name = \"Riley\";");
+    show_value("  Current player:", player_name);
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: Mutable Variables
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: Mutable Variables with let mut");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("When you need to update a variable, use 'let mut':");
+    println("  let mut score = 0;");
+    println("  score = score + 10;  // This works!");
+    println();
+
+    println("Let me demonstrate with a scoring system:");
+    let mut score = 0;
+    show_value("Starting score:", score);
+    println();
+
     score = add_points(score, 5);
-    show_value("Second update ->", score);
+    show_value("After adding 5 points:", score);
+    println();
 
-    // Quick self-check: verify arithmetic
-    println("[Self Check] Final score: ", score);
+    score = add_points(score, 10);
+    show_value("After adding 10 more points:", score);
+    println();
 
-    println("Try-It Yourself: enter different starting values and rerun.");
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Type Annotations
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Type Annotations");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Type annotations help catch errors early:");
+    println("  let mut score: int = 0;");
+    println("  fn add_points(score: int, points: int) { ... }");
+    println();
+    println("The compiler knows that 'score' must be an integer,");
+    println("preventing accidental assignment of strings or other types.");
+    println();
+
+    println("Now it's your turn to try!");
+    let starting_input = inp("Enter a starting score (number): ");
+    let mut your_score: int = starting_input;
+    show_value("Your starting score:", your_score);
+    println();
+
+    your_score = add_points(your_score, 2);
+    show_value("After adding 2 points:", your_score);
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Constants
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Constants with const");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Constants are values that never change:");
+    println("  const MAX_PLAYERS = 10;");
+    println("  const GAME_TITLE = \"Solvra Quest\";");
+    println();
+    println("Use constants for configuration values and fixed settings.");
+    println();
+
+    const BONUS_MULTIPLIER = 2;
+    println("Example:");
+    println("  const BONUS_MULTIPLIER = 2;");
+    let bonus = your_score * BONUS_MULTIPLIER;
+    show_value("Your score with bonus:", bonus);
+    println();
+
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: Which keyword creates a variable that CAN be changed?");
+    println("  a) let");
+    println("  b) let mut");
+    println("  c) const");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! 'let mut' creates a mutable variable.");
+        println("  This allows you to update the value after creation.");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — let mut");
+        println("  'let' creates immutable variables (cannot change)");
+        println("  'const' creates constants (also cannot change)");
+        println("  'let mut' creates mutable variables (can change)");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to create immutable variables with let");
+    println("  ✓ How to create mutable variables with let mut");
+    println("  ✓ How to define constants with const");
+    println("  ✓ How to use type annotations like : int for safety");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraScript's type system helps you write safer code.");
+    println("  Use 'let' by default, 'let mut' when needed, and 'const'");
+    println("  for values that never change.");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Run the next lesson with:");
+        println("   ./scripts/learn.sh");
+        println("   (Select lesson 3: Functions)");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Compare while and for loops in SolvraScript.
+// Interactive guided tutorial: Master loops and iteration
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/05_loops.svs
-// Try-It: extend the challenge_steps array with your own milestones.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn sum_with_while(values) {
@@ -38,28 +37,213 @@ fn sum_with_for(values) {
     return total;
 }
 
-fn run_demo() {
-    let challenge_steps = [1, 2, 3, 4];
-    println("Steps in plan -> ", len(challenge_steps), " items");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Welcome to SolvraScript — Lesson 5: Loops                ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
 
-    let while_total = sum_with_while(challenge_steps);
-    let for_total = sum_with_for(challenge_steps);
+    println("📚 What you'll learn:");
+    println("  • How to use while loops for conditional iteration");
+    println("  • How to use for loops to iterate over collections");
+    println("  • When to choose while vs for loops");
+    println("  • How to build iterative algorithms");
+    println();
 
-    println("While loop total -> ", while_total);
-    println("For loop total -> ", for_total);
+    println("Let's begin!");
+    println();
 
-    // Quick self-check: totals must match.
-    if while_total == for_total {
-        println("[Self Check] Totals match.");
+    // Concept 1: while Loops
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: while Loops");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("A 'while' loop repeats code as long as a condition is true.");
+    println();
+    println("Syntax:");
+    println("  while condition {");
+    println("      // code to repeat");
+    println("  }");
+    println();
+    println("Example - Sum array with while:");
+    println("  let mut index = 0;");
+    println("  while index < len(values) {");
+    println("      total = total + values[index];");
+    println("      index = index + 1;");
+    println("  }");
+    println();
+
+    let demo_array = [1, 2, 3, 4, 5];
+    println("Let's sum the array: ", demo_array);
+    let while_result = sum_with_while(demo_array);
+    println("Result using while loop: ", while_result);
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: for Loops
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: for Loops");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("A 'for' loop iterates over items in a collection.");
+    println("This is simpler and cleaner for array iteration!");
+    println();
+    println("Syntax:");
+    println("  for item in collection {");
+    println("      // use item");
+    println("  }");
+    println();
+    println("Example - Sum array with for:");
+    println("  for value in values {");
+    println("      total = total + value;");
+    println("  }");
+    println();
+
+    let for_result = sum_with_for(demo_array);
+    println("Same array: ", demo_array);
+    println("Result using for loop: ", for_result);
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Choosing the Right Loop
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: When to Use while vs for");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Use 'for' when:");
+    println("  • Iterating over arrays or collections");
+    println("  • You need each element one at a time");
+    println("  • The number of iterations is known");
+    println();
+    println("Use 'while' when:");
+    println("  • Looping until a condition changes");
+    println("  • Number of iterations is unknown");
+    println("  • You need custom loop control");
+    println();
+
+    // Verify both approaches give same result
+    if while_result == for_result {
+        println("[Self Check] Both loops produced the same result: ", while_result);
+        println("This confirms they're equivalent for this task!");
     } else {
-        println("[Self Check] Totals differ. Investigate loops.");
+        println("[Self Check] Results differ - investigate loops!");
     }
+    println();
 
-    println("Try-It Yourself: add a value to challenge_steps and rerun.");
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Build Your Own
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Interactive Loop Example");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Now let's build your own array and sum it!");
+    println();
+
+    let num1 = inp("Enter first number: ");
+    let num2 = inp("Enter second number: ");
+    let num3 = inp("Enter third number: ");
+    println();
+
+    let your_array = [num1, num2, num3];
+    println("Your array: ", your_array);
+    println();
+
+    let your_sum = sum_with_for(your_array);
+    println("Sum of your array: ", your_sum);
+    println();
+
+    println("Let me show each step with a loop:");
+    for value in your_array {
+        println("  Processing: ", value);
+    }
+    println("  Final total: ", your_sum);
+    println();
+
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: Which loop is best for iterating over an array?");
+    println("  a) while loop");
+    println("  b) for loop");
+    println("  c) Both are equally good");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! The 'for' loop is cleaner and simpler for arrays.");
+        println("  It automatically handles indexing and iteration.");
+        println("  Example: for item in array { ... }");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — for loop");
+        println("  While you CAN use 'while' loops for arrays,");
+        println("  'for' loops are more concise and less error-prone.");
+        println("  They don't require manual index management!");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to use while loops for conditional iteration");
+    println("  ✓ How to use for loops for collection iteration");
+    println("  ✓ When to choose while vs for loops");
+    println("  ✓ How to build iterative algorithms");
+    println();
+    println("Key Takeaway:");
+    println("  SolvraCore supports multiple iteration styles for flexible control.");
+    println("  Choose 'for' for arrays and 'while' for custom conditions.");
+    println("  Both are powerful tools for processing data!");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Run the next lesson with:");
+        println("   ./scripts/learn.sh");
+        println("   (Select lesson 6: Basic Math)");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------

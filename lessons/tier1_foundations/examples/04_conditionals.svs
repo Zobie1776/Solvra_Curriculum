@@ -11,12 +11,11 @@
 // Section 1.0 - Lesson Objective
 //==================================================
 
-// Practice if/else, boolean helpers, and comparisons.
+// Interactive guided tutorial: Master conditional logic and branching
 // Run with: ./scripts/build.sh lessons/tier1_foundations/examples/04_conditionals.svs
-// Try-It: adjust the temperature value to explore other branches.
 
 //==================================================
-// Section 2.0 - Example Execution
+// Section 2.0 - Tutorial Execution
 //==================================================
 
 fn describe_temperature(temp_c) {
@@ -31,39 +30,216 @@ fn describe_temperature(temp_c) {
 }
 
 fn show_value(label, value) {
-    println(label);
-    println(value);
+    println(label, " ", value);
 }
 
-fn run_demo() {
-    let reading = inp("Enter temperature in Celsius: ");
+fn run_tutorial() {
+    println("╔════════════════════════════════════════════════════════════╗");
+    println("║  Welcome to SolvraScript — Lesson 4: Conditionals         ║");
+    println("╚════════════════════════════════════════════════════════════╝");
+    println();
+
+    println("📚 What you'll learn:");
+    println("  • How to use if statements for decision-making");
+    println("  • How to chain conditions with else if");
+    println("  • How to use comparison operators (<=, <, ==, !=, >=, >)");
+    println("  • How to build logic-driven applications");
+    println();
+
+    println("Let's begin!");
+    println();
+
+    // Concept 1: Basic if Statements
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 1: Basic if Statements");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Conditionals let your program make decisions based on conditions.");
+    println();
+    println("Syntax:");
+    println("  if condition {");
+    println("      // code runs if condition is true");
+    println("  }");
+    println();
+    println("Example:");
+    println("  if temp_c <= 0 {");
+    println("      return \"Freezing\";");
+    println("  }");
+    println();
+
+    let test_temp = -5;
+    println("Testing with temperature: ", test_temp, "°C");
+    let result = describe_temperature(test_temp);
+    show_value("Result:", result);
+    println();
+
+    let continue1 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 2: if-else Chains
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 2: if-else Chains");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Use 'else if' to test multiple conditions in sequence:");
+    println();
+    println("  if temp_c <= 0 {");
+    println("      return \"Freezing\";");
+    println("  } else if temp_c < 15 {");
+    println("      return \"Chilly\";");
+    println("  } else if temp_c < 25 {");
+    println("      return \"Comfortable\";");
+    println("  }");
+    println();
+    println("The first condition that evaluates to true wins!");
+    println();
+
+    println("Let's test different temperatures:");
+    let samples = [ -5, 10, 22, 30 ];
+    for value in samples {
+        let outcome = describe_temperature(value);
+        println("  ", value, "°C → ", outcome);
+    }
+    println();
+
+    let continue2 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 3: Comparison Operators
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 3: Comparison Operators");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("SolvraScript provides several comparison operators:");
+    println("  ==  Equal to");
+    println("  !=  Not equal to");
+    println("  <   Less than");
+    println("  <=  Less than or equal to");
+    println("  >   Greater than");
+    println("  >=  Greater than or equal to");
+    println();
+    println("These operators return true or false (boolean values).");
+    println();
+
+    println("Now it's your turn to try!");
+    let reading = inp("Enter a temperature in Celsius: ");
     let summary = describe_temperature(reading);
-    show_value("Current reading ->", reading);
-    show_value("Feels ->", summary);
+    println();
+    show_value("Your reading:", reading);
+    show_value("Feels like:", summary);
+    println();
+
+    let continue3 = inp("Press Enter to continue...");
+    println();
+
+    // Concept 4: Using Conditionals in Logic
+    println("─────────────────────────────────────────────────────────────");
+    println("📖 Concept 4: Building Logic-Driven Applications");
+    println("─────────────────────────────────────────────────────────────");
+    println();
+    println("Conditionals enable your programs to respond intelligently.");
+    println("You can use them to:");
+    println("  • Validate user input");
+    println("  • Control program flow");
+    println("  • Make automated decisions");
+    println();
 
     let mut flags = [];
     if summary == "Comfortable" {
         flags = push(flags, "Open windows");
+        flags = push(flags, "Enjoy the day");
+    } else if summary == "Freezing" || summary == "Chilly" {
+        flags = push(flags, "Turn on heat");
+        flags = push(flags, "Wear warm clothes");
     } else {
-        flags = push(flags, "Adjust thermostat");
+        flags = push(flags, "Turn on AC");
+        flags = push(flags, "Stay hydrated");
     }
 
-    show_value("Suggested actions count ->", len(flags));
-
-    // Quick self-check loop: run descriptions for multiple values.
-    let samples = [ -5, 10, 22, 30 ];
-    for value in samples {
-        println("[Check] Sample reading:");
-        println(value);
-        println("Outcome:");
-        println(describe_temperature(value));
+    println("Suggested actions:");
+    for action in flags {
+        println("  • ", action);
     }
+    println();
 
-    println("Try-It Yourself: insert a branch for very hot days.");
+    let continue4 = inp("Press Enter to continue...");
+    println();
+
+    // Try-It-Yourself Section
+    println("═════════════════════════════════════════════════════════════");
+    println("✍️  Try-It-Yourself Challenge");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Let's test your understanding!");
+    println();
+
+    println("Question: What does the condition 'temp_c < 15' mean?");
+    println("  a) Temperature equals 15");
+    println("  b) Temperature is less than 15");
+    println("  c) Temperature is greater than 15");
+    println();
+
+    let answer = inp("Your answer (a/b/c): ");
+    println();
+
+    if answer == "b" || answer == "B" {
+        println("✓ Correct! The '<' operator means 'less than'.");
+        println("  So 'temp_c < 15' is true when temperature is below 15.");
+    } else {
+        println("✗ Not quite. The correct answer is 'b' — less than 15");
+        println("  The '<' operator checks if the left value is smaller");
+        println("  than the right value.");
+        println("  Example: 10 < 15 is true, but 20 < 15 is false");
+    }
+    println();
+
+    let continue5 = inp("Press Enter to see summary...");
+    println();
+
+    // Summary
+    println("═════════════════════════════════════════════════════════════");
+    println("📋 Lesson Summary");
+    println("═════════════════════════════════════════════════════════════");
+    println();
+    println("Today you learned:");
+    println("  ✓ How to use if statements for decision-making");
+    println("  ✓ How to chain multiple conditions with else if");
+    println("  ✓ How to use comparison operators (==, !=, <, <=, >, >=)");
+    println("  ✓ How to build logic-driven, responsive applications");
+    println();
+    println("Key Takeaway:");
+    println("  Control flow is essential for decision-making in SolvraCore.");
+    println("  Conditionals let your programs adapt to different situations");
+    println("  and respond intelligently to user input.");
+    println();
+
+    // Next Steps
+    println("─────────────────────────────────────────────────────────────");
+    println("What would you like to do?");
+    println("  [1] View lesson again");
+    println("  [2] Continue to next lesson");
+    println("  [3] Exit");
+    println();
+
+    let choice = inp("Your choice (1/2/3): ");
+    println();
+
+    if choice == "1" {
+        println("📖 Restarting lesson...");
+        println();
+        run_tutorial();
+    } else if choice == "2" {
+        println("🎓 Great! Run the next lesson with:");
+        println("   ./scripts/learn.sh");
+        println("   (Select lesson 5: Loops)");
+    } else {
+        println("👋 Thanks for learning with us! See you next time.");
+    }
+    println();
 }
 
 fn main() {
-    run_demo();
+    run_tutorial();
 }
 
 //--------------------------------------------------
