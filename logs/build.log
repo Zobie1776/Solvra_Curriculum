@@ -1,0 +1,48 @@
+[INFO] Running lesson: lessons/tier1_foundations/examples/01_hello_world.svs
+error: unexpected argument 'lessons/tier1_foundations/examples/01_hello_world.svs' found
+
+Usage: solvrascript [OPTIONS] <SCRIPT>
+
+For more information, try '--help'.
+[INFO] Running lesson: lessons/tier1_foundations/examples/01_hello_world.svs
+error: unexpected argument 'lessons/tier1_foundations/examples/01_hello_world.svs' found
+
+Usage: solvrascript [OPTIONS] <SCRIPT>
+
+For more information, try '--help'.
+[INFO] Running lesson: lessons/tier1_foundations/examples/01_hello_world.svs
+error: unexpected argument 'lessons/tier1_foundations/examples/01_hello_world.svs' found
+
+Usage: solvrascript [OPTIONS] <SCRIPT>
+
+For more information, try '--help'.
+[INFO] Running lesson: lessons/tier1_foundations/examples/01_hello_world.svs
+error: unexpected argument 'lessons/tier1_foundations/examples/01_hello_world.svs' found
+
+Usage: solvrascript [OPTIONS] <SCRIPT>
+
+For more information, try '--help'.
+[INFO] Running lesson: lessons/tier1_foundations/examples/01_hello_world.svs
+Welcome to SolvraScript!
+
+Hello, 
+Call println again to add a blank line.
+
+You are about to run real Solvra bytecode.
+[Self Check] Greeting for Tester ->
+Hello, 
+Try-It Yourself: change learner_name to your name.
+[INFO] Lesson completed successfully.
+[INFO] Running lesson: lessons/tier1_foundations/examples/02_variables.svs
+== Banner ==
+Variable tour
+Starting count ->
+3
+First update ->
+5
+Second update ->
+10
+[Self Check] Expected 10 ->
+10
+Try-It Yourself: change STARTING_COUNT to 5 and rerun.
+[INFO] Lesson completed successfully.
