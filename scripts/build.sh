@@ -65,9 +65,23 @@ LOG_FILE="${ROOT}/logs/build.log"
 #==================================================
 
 echo "[INFO] Running lesson: $LESSON_PATH" | tee -a "$LOG_FILE"
-"$SOLVRA_SCRIPT_BIN" "$ROOT/$LESSON_PATH" "$@" 2>&1 | tee -a "$LOG_FILE"
 
-echo "[INFO] Lesson completed successfully." | tee -a "$LOG_FILE"
+FULL_PATH="${ROOT}/${LESSON_PATH}"
+
+# Run the SolvraScript VM directly with the lesson path
+set +e
+"$SOLVRA_SCRIPT_BIN" "$FULL_PATH" 2>&1 | tee -a "$LOG_FILE"
+status=${PIPESTATUS[0]}
+set -e
+
+if [ "$status" -eq 0 ]; then
+  echo "[INFO] Lesson completed successfully." | tee -a "$LOG_FILE"
+else
+  echo "[ERROR] Lesson failed with exit code $status. See $LOG_FILE for details." | tee -a "$LOG_FILE"
+  exit "$status"
+fi
+
+
 
 #--------------------------------------------------
 # End comments: Demonstrates successful VM execution of base syntax

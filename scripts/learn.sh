@@ -4,8 +4,8 @@
 #==================================================
 # Author: ZobieLabs
 # License: Duality Public License (DPL v1.0)
-# Goal: Interactive lesson menu for SolvraScript curriculum
-# Objective: Dynamically scan and present lessons from tier1-4 folders
+# Goal: Interactive lesson launcher for SolvraScript Curriculum
+# Objective: Auto-detect lessons, parse headers, and render dynamic menu
 #==================================================
 
 #==================================================
@@ -29,38 +29,85 @@ RED="\033[31m"
 RESET="\033[0m"
 
 #==================================================
-# Section 2.0 - Menu Logic
+# Section 2.0 - Header Parsing
 #==================================================
+
+# Extract lesson title from // Goal: line in file
+parse_lesson_title() {
+  local file=$1
+  local goal_line
+
+  # Try to find // Goal: line (case-insensitive)
+  goal_line=$(grep -i "^// Goal:" "$file" 2>/dev/null | head -1 || true)
+
+  if [[ -n "$goal_line" ]]; then
+    # Extract everything after "// Goal:" and trim whitespace
+    echo "$goal_line" | sed -E 's|^//[[:space:]]*Goal:[[:space:]]*||i' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+  else
+    # Fallback: use filename without extension, formatted nicely
+    basename "$file" .svs | sed 's/\.svc$//' | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g'
+  fi
+}
+
+#==================================================
+# Section 3.0 - Menu Logic
+#==================================================
+
+declare -A LESSONS
+declare -A LESSON_TITLES
+
+function scan_lessons() {
+  local idx=1
+
+  # Scan all tier directories
+  for tier_dir in "${ROOT}/lessons"/tier*; do
+    if [ ! -d "$tier_dir" ]; then continue; fi
+
+    tier_name=$(basename "$tier_dir")
+
+    # Find all .svs and .svc files (case-insensitive)
+    while IFS= read -r lesson_file; do
+      if [ ! -f "$lesson_file" ]; then continue; fi
+
+      lesson_rel="${lesson_file#${ROOT}/}"
+      lesson_title=$(parse_lesson_title "$lesson_file")
+
+      LESSONS[$idx]="$lesson_rel"
+      LESSON_TITLES[$idx]="${tier_name}|${lesson_title}"
+      ((idx++))
+    done < <(find "$tier_dir" -type f \( -iname "*.svs" -o -iname "*.svc" \) 2>/dev/null | sort)
+  done
+}
 
 function render_menu() {
   printf "${BLUE}========================================${RESET}\n"
   printf "${BLUE}📚 SolvraScript Curriculum${RESET}\n"
   printf "${BLUE}========================================${RESET}\n"
 
-  local idx=1
+  local current_tier=""
 
-  for tier_dir in "${ROOT}/lessons"/tier*; do
-    if [ ! -d "$tier_dir" ]; then continue; fi
+  for idx in $(echo "${!LESSON_TITLES[@]}" | tr ' ' '\n' | sort -n); do
+    local tier_and_title="${LESSON_TITLES[$idx]}"
+    local tier_name="${tier_and_title%%|*}"
+    local lesson_title="${tier_and_title#*|}"
 
-    tier_name=$(basename "$tier_dir" | sed 's/_/ /g' | sed 's/tier/Tier/')
+    # Format tier name nicely
+    local tier_display=$(echo "$tier_name" | sed 's/_/ /g' | sed 's/tier/Tier/')
 
-    printf "\n${YELLOW}%s:${RESET}\n" "$tier_name"
+    # Print tier header if this is a new tier
+    if [[ "$tier_name" != "$current_tier" ]]; then
+      printf "\n${YELLOW}%s:${RESET}\n" "$tier_display"
+      current_tier="$tier_name"
+    fi
 
-    # Find all .svs and .svc files in examples, exercises, and root
-    while IFS= read -r lesson_file; do
-      lesson_rel="${lesson_file#${ROOT}/}"
-      lesson_title=$(basename "$lesson_file" .svs | basename .svc | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g')
-      printf " ${GREEN}%2d${RESET}) %s\n" "$idx" "$lesson_title"
-      LESSONS[$idx]="$lesson_rel"
-      ((idx++))
-    done < <(find "$tier_dir" -type f \( -name "*.svs" -o -name "*.svc" \) | sort)
+    printf " ${GREEN}%2d${RESET}) %s\n" "$idx" "$lesson_title"
   done
 
   printf "\n ${YELLOW}q${RESET}) Quit\n"
 }
 
 #==================================================
-# Section 3.0 - Logging
+# Section 4.0 - Logging
 #==================================================
 
 mkdir -p "${ROOT}/logs"
@@ -73,10 +120,11 @@ function log_event() {
 log_event "session_start"
 
 #==================================================
-# Section 4.0 - Runtime Execution
+# Section 5.0 - Runtime Execution
 #==================================================
 
-declare -A LESSONS
+# Scan lessons once at startup
+scan_lessons
 
 while true; do
   render_menu
@@ -108,8 +156,8 @@ while true; do
 done
 
 #--------------------------------------------------
-# End comments: Dynamically builds lesson menu from filesystem structure
-# @ZNOTE: Supports scalable curriculum expansion without code changes
+# End comments: Parses lesson metadata and renders interactive menu
+# @ZNOTE: Dynamically reads // Goal: headers for proper lesson titles
 #--------------------------------------------------
 
 #==================================================
